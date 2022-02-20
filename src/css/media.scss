@@ -1,0 +1,16 @@
+@import 'globals';
+
+.media {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.media__description {
+  flex: 1;
+}
+
+.media__image img{
+  width: 8rem;
+  height: 8rem;
+}

@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&family=PT+Sans+Caption:wght@700&family=Roboto&display=swap');
+
+$pricelee-blue: #8590e5;
+$cheese-yellow: #efbc3e;
+$dark-purple: #221126;
+$lavender-blue: #8377dc;
+$light-eggplant: #7c377c;
+
+$link-visited: lighten($dark-purple, 20%);
+$link-hover: lighten($dark-purple, 40%);
+$deal-link: #ffffff;
+$deal-link-visited: lighten($light-eggplant, 40%);
+$deal-link-hover: lighten($light-eggplant, 50%);
+
+$main-font: 'Roboto', sans-serif;
+$heading-font: 'PT Sans Caption', sans-serif;
+$logo-font: 'Montserrat', sans-serif;
+

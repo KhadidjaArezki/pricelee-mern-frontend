@@ -1,0 +1,48 @@
+@import 'globals';
+
+.services {
+  background-color: $lavender-blue;
+}
+.services .container {
+  margin-top: -2rem;
+  padding-bottom: 5rem;
+  position: relative;
+}
+.services h1 {
+  color: $dark-purple;
+  font-size: 1.8rem;
+  padding-top: 10rem;
+  padding-bottom: 2rem;
+}
+
+.services__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+}
+
+.services .media__image {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  text-align: center;
+  background-color: $dark-purple;
+}
+
+.services .media__image img {
+  transform: translateY(.4rem);
+  width: 70%;
+  height: 70%;
+}
+
+.services .media__description {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .services__wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+}

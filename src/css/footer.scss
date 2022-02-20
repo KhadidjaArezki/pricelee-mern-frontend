@@ -1,0 +1,78 @@
+@import 'globals';
+
+.footer {
+  background-color: $lavender-blue;
+}
+
+.footer .container {
+  margin-top: -3rem;
+  padding-bottom: 3rem;
+  padding-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.footer h5 {
+  font-size: 1.4rem;
+  letter-spacing: .01rem;
+  margin-bottom: 1rem;
+}
+
+.email a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.email img {
+  width: 2rem;
+  height: 2rem;
+}
+.social-media {
+  justify-self: center;
+  display: flex;
+  gap: 2rem;
+}
+.social-media a {
+    padding: 0 1rem;
+  }
+.social-media img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.links a {
+  padding-right: 3rem;
+  padding-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+.copyright small {
+  letter-spacing: .06rem;
+  font-size: 1rem;
+}
+@media (max-width: 768px) {
+  .footer .container {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .links, .email {
+    justify-self: start;
+  }
+  .email {
+    margin-top: -2rem;
+  }
+  .links a {
+    display: block;
+  }
+  .copyright {
+    order: 4;
+  }
+  .social-media {
+    order: 3;
+    gap: 4rem;
+  }
+  .social-media a {
+    padding: 0 2rem;
+  }
+}

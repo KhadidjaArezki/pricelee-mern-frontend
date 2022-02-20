@@ -1,0 +1,30 @@
+.cta {
+  background-color: $cheese-yellow;
+  border: 0;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  box-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3);
+}
+
+.cta a {
+  font-family: $heading-font;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  margin: -1.4rem 0;
+}
+
+.cta a:visited {
+  color: $dark-purple;
+}
+
+.cta img {
+  height: 1.7rem;
+  width: 1.7rem;
+}
+
+.cta p {
+  font-size: 1.3rem;
+}

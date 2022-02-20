@@ -1,0 +1,60 @@
+@import 'globals';
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 5em;
+  padding-top: 2em;
+}
+.title {
+  font-size: 1.3em;
+  color: $dark-purple;
+  font-weight: bold;
+  margin-top: -.7em;
+}
+
+.title a:visited, .title a:hover {
+  color: $dark-purple;
+}
+.title p {
+  display: inline-block;
+  margin: 0;
+}
+.p {
+  font-family: $logo-font;
+  font-size: 1.6em;
+  font-weight: normal;
+  color: $cheese-yellow;
+  text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3)
+}
+
+.nav-menu {
+  // border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu > li {
+  padding: .8em 1.4em;
+  text-transform: uppercase;
+}
+
+.nav-menu .login {
+  letter-spacing: .02em;
+  padding-top: .3em;
+  padding-bottom: .3em;
+  margin-left: auto;
+  border: 2px solid $cheese-yellow;
+  border-radius: 500px;
+  box-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3);
+  text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.5)
+}
+.login a:link, .login a:hover {
+  color: $cheese-yellow;
+  font-weight: bold;
+}
+
+.navbar__toggle {
+  display: none;
+}
