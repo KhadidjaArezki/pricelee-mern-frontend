@@ -33,18 +33,26 @@
   display: flex;
   gap: 2rem;
 }
-.social-media a {
-    padding: 0 1rem;
-  }
+// .social-media a {
+//     padding: 0 1rem;
+//   }
 .social-media img {
   width: 1.5rem;
   height: 1.5rem;
 }
 
 .links a {
-  padding-right: 3rem;
-  padding-bottom: 2rem;
-  font-size: 1.2rem;
+  margin-right: 3rem;
+  margin-bottom: 2rem;
+  // font-size: 1.2rem;
+  text-transform: uppercase;
+
+  // &:visited {
+  //   color: $dark-purple;
+  // }
+  // &:hover {
+  //   color: $link-hover;
+  // }
 }
 
 .copyright small {
@@ -60,7 +68,7 @@
     justify-self: start;
   }
   .email {
-    margin-top: -2rem;
+    margin-top: -4rem;
   }
   .links a {
     display: block;
@@ -71,8 +79,9 @@
   .social-media {
     order: 3;
     gap: 4rem;
-  }
-  .social-media a {
-    padding: 0 2rem;
+
+    // & a {
+    //   padding: 0 2rem;
+    // }
   }
 }

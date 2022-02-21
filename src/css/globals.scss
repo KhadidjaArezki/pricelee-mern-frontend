@@ -6,8 +6,9 @@ $dark-purple: #221126;
 $lavender-blue: #8377dc;
 $light-eggplant: #7c377c;
 
-$link-visited: lighten($dark-purple, 20%);
-$link-hover: lighten($dark-purple, 40%);
+$link-visited: lighten($dark-purple, 15%);
+$link-hover: lighten($dark-purple, 25%);
+$link-active: lighten($cheese-yellow, 50%);
 $deal-link: #ffffff;
 $deal-link-visited: lighten($light-eggplant, 40%);
 $deal-link-hover: lighten($light-eggplant, 50%);

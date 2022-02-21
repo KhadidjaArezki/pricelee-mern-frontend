@@ -1,0 +1,31 @@
+@import 'globals';
+
+.title {
+  font-size: 1.3rem;
+  color: $dark-purple;
+  font-weight: bold;
+  margin-top: -.7rem;
+
+  a:visited,  a:hover {
+    color: $dark-purple;
+  }
+
+  p {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .p {
+    font-family: $logo-font;
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: $cheese-yellow;
+    text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3)
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    margin-left: 4rem;
+  }
+}

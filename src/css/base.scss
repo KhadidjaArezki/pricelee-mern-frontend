@@ -58,12 +58,17 @@ img {
   .container {
     margin: 0 5rem;
   }
+  
+  a {
+    padding: .5rem 1.4rem;
+  }
 }
 
 @media (max-width: 580px) {
   .container {
     margin: 0 2rem;
   }
+  
 }
 // .App-logo {
 //   height: 40vmin;
