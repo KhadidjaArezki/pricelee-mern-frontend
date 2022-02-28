@@ -1,0 +1,55 @@
+@import 'globals';
+
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatUpAndDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatedShapeShadow {
+  0% {
+    left: 8%;
+    width: 30%;
+  }
+  50% {
+    left: 15%;
+    width: 15%;
+  }
+  100% {
+    left: 8%;
+    width: 30%;
+  }
+}
+
+@keyframes scrollDownArrow {
+  0% {
+    opacity:0
+  }
+  40% {
+    opacity:1
+  }
+  80% {
+    opacity:0
+  }
+  100% {
+    opacity:0
+  }
+}
+

@@ -1,26 +1,34 @@
 @import 'globals';
 @import 'angled';
 
-.deals {
+#deals {
   background-color: $dark-purple;
   color: $deal-link;
   position: relative;
   z-index: 1;
 }
 
-.deals:after {
+#deals:after {
   @include angled(-4deg)
 }
 
-.deals .container {
+#deals .container {
   margin-top: -2rem;
   padding-bottom: 5rem;
   // position: relative;
 }
-.deals h1 {
+#deals h1 {
   color: $lavender-blue;
-  padding-top: 15rem;
+  padding-top: 17rem;
   padding-bottom: 2rem;
+}
+
+#deals-anchor {
+  content: '';
+  // color: $dark-purple;
+  position: absolute;
+  top: 25%;
+  left: 12%;
 }
 
 /***********************Slick Slider***********************/
@@ -89,7 +97,7 @@ button.slick-next:before, button.slick-prev:before {
     height: 18rem;
   }
 
-  .deals {
+  #deals {
     padding-left: 3rem;
     padding-right: 3rem;
   }

@@ -1,0 +1,58 @@
+@import 'globals';
+@import 'animations';
+
+// @mixin arrow-transitions($dis, $rot) {
+//   transform: translateY($dis) rotateZ($rot);
+// }
+
+.sd-arrows {
+	width: 4rem;
+	height: 5rem;
+	position: absolute;
+	left: 50%;
+	top: 135%;
+  z-index: 10;
+  
+  & path {
+    stroke: $pricelee-blue;
+    fill: transparent;
+    stroke-width: .1rem;
+    animation: scrollDownArrow  2s infinite;
+    transition: all 0.5s ease-in; 
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    & path {
+      animation: 0;
+    }
+    & .sda1 {
+      transform: translateY(15%);
+    }
+    & .sda2 {
+      transform: translateY(0);
+    }
+    & .sda3{
+      transform: translateY(-15%);
+    }      
+  }
+}
+
+.sd-arrows path.sda1 {
+	animation-delay:-1s;
+}
+
+.sd-arrows path.sda2 {
+	animation-delay:-0.5s;
+}
+
+.sd-arrows path.sda3 {	
+	animation-delay:0s;
+}
+
+@media (max-width: 580px) {
+  .sd-arrows {
+    display: none;
+  }
+}

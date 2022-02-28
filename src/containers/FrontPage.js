@@ -1,5 +1,6 @@
 import pig from '../images/landing-pic.svg'
 import magnifier from '../icons/magnifying-glass.png'
+import ScrollDownArrow from '../components/ScrollDownArrow';
 // import coin_big from '../images/coin-big.svg'
 // import coin_medium from '../images/coin-medium.svg';
 // import coin_small from '../images/coin-small.svg';
@@ -7,6 +8,7 @@ import magnifier from '../icons/magnifying-glass.png'
 const FrontPage = () => {
   return (
     <div className="container">
+      <ScrollDownArrow/>
       <div className="hero">
         <div className="teaser">
           <p className="headline">An Online Price Tracking Service</p>

@@ -6,7 +6,7 @@ import megaphone from "../icons/megaphone.png";
 
 const Services = () => {
   return (
-    <div className="services">
+    <div id="services">
       <div className="container">
         <h1>Services</h1>
         <div className='services__wrapper'>

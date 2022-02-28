@@ -43,10 +43,12 @@ const Deals = () => {
     ]
   }
   return (
-    <div className="deals">
+    <div id="deals">
       <div className="container">
-        <h1>Featured Deals</h1>
-        
+        <div>
+          <span id="deals-anchor"></span>
+          <h1>Featured Deals</h1>
+        </div>
           <Slider {...settings}>
             <Deal 
               imageSrc={monitor}

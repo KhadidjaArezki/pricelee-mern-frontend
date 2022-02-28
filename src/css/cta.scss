@@ -4,6 +4,16 @@
   border-radius: 25px;
   padding: 1rem 2rem;
   box-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3);
+  transition: all .4s ease-out;
+
+  &:hover, &:focus {
+    transform: scale(1.1);
+    background-color: darken($cheese-yellow, 4%);
+  }
+  &:active {
+    box-shadow: inset 0 0 0.5rem #124,
+                inset 0 0.5rem 1rem rgba(0, 0, 0, 0.4)
+  }
 }
 
 .cta a {
@@ -30,7 +40,7 @@
 }
 
 @media (max-width: 768px) {
-  .cta a{
+  .cta a {
     padding: 0;
   }
 }

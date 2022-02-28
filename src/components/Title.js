@@ -2,8 +2,7 @@ const Title = () => {
   return (
     <div className='title'>
       <a href='/'>
-        <p className='p'>p</p>
-        <p>ricelee</p>
+        <p>pricelee</p>
       </a>
     </div>
   )

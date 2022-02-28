@@ -8,7 +8,17 @@
   & > li {
     padding: .8rem 1.4rem;
     text-transform: uppercase;
+   
+    > a {
+      display: inline-block;
+      transition: transform 0.2s ease-out;
+    
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
+  
 }
 
 .navbar__toggle-wrapper {
@@ -17,6 +27,7 @@
 
 @media (max-width: 768px) {
   .navbar {
+    height: 100vh;
     order: -1;
     position: fixed;
     top: 0;
@@ -24,18 +35,27 @@
     background-color: transparent;
     transition: all .5s linear;
     
+    &.open {
+      background-color: rgba($color: $dark-purple, $alpha: 0.8);
+      // border-top: 2px solid rgba($color: $cheese-yellow, $alpha: 0.8);
+      // border-right: 2px solid rgba($color: $cheese-yellow, $alpha: 0.8);
+      // border-bottom: 2px solid rgba($color: $cheese-yellow, $alpha: 0.8);
+      backdrop-filter: blur(5px);
+      // border-top-right-radius: 0.5em;
+      // border-bottom-right-radius: 0.5em;
+    }
+
     .nav-menu {
       display: block;
       margin: 0;
 
       li {
         padding: 0;
-        border-top: 1px solid $cheese-yellow;
-        background-image: linear-gradient(to bottom, #000000, darken($dark-purple, 3%));
-        box-shadow: inset 2px 2px 1rem rgba($color: #000000, $alpha: 0.3);
+        // background-image: linear-gradient(to bottom, #000000, darken($dark-purple, 3%));
+        // box-shadow: inset 2px 2px 1rem rgba($color: #000000, $alpha: 0.3);
         opacity: 0;
-        transform: translate(-1em);
-        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3),
+        transform: translateX(-2em);
+        transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.3),
                     opacity 0.4s linear;
 
       }
@@ -96,19 +116,14 @@
       }
     }
     /*** Animation ***/
-    &.open {
-      background-color: $dark-purple;
-      border: 2px solid $cheese-yellow;
-      border-top-right-radius: 0.5em;
-      border-bottom-right-radius: 0.5em;
-    }
+    
     &.open .navbar__toggle-wrapper{
       border: 0;
     }
     &.open .navbar__toggle {
-      transform: translateX(-50px);
       background: transparent;
       box-shadow: none;
+      transform: translateX(-50px);
     }
     &.open  .navbar__toggle:before {
       transform: rotate(45deg) translate(35px, -35px);
@@ -119,11 +134,15 @@
 
     &.open .nav-menu li {
       opacity: 1;
-      transform: translate(0);
+      transform: translateX(0);
+      border-bottom: .2px solid rgba($color: $cheese-yellow, $alpha: 0.5);
+    }
+    &.open .nav-menu li:nth-child(1) {
+      border-top: .2px solid rgba($color: $cheese-yellow, $alpha: 0.5);
     }
     @for $i from 1 to 4 {
       &.open .nav-menu li:nth-child(#{$i}) {
-        transition-delay: (0.1s * $i) - 0.1s;
+        transition-delay: (0.2s * $i) - 0.1s;
       }
     }
   }

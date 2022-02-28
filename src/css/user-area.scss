@@ -21,7 +21,17 @@
   border: 2px solid $cheese-yellow;
   border-radius: 500px;
   box-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3);
-  text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.5)
+  text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.5);
+  transition: all .2s ease-out;
+
+  &:hover, &:focus {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    box-shadow: inset 0 0 0.3rem #124,
+                inset 0 0.2rem .3rem rgba(0, 0, 0, 0.4)
+  }
 }
 #login a:link,
 #login a:hover,
