@@ -1,4 +1,5 @@
 @import 'globals';
+@import 'animations';
 
 #services {
   background-color: $lavender-blue;
@@ -21,7 +22,16 @@
   gap: 6rem;
 }
 
-#services .media__image {
+.service {
+  opacity: 0;
+  padding: 1rem;
+  background-color: darken($lavender-blue, 9%);
+  border-radius: 25px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  // transition: opacity 0.5s;
+}
+
+.service .media__image {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -29,20 +39,28 @@
   background-color: $dark-purple;
 }
 
-#services .media__image img {
+.service .media__image img {
   transform: translateY(.4rem);
   width: 70%;
   height: 70%;
 }
 
-#services .media__description {
+.service .media__description {
   font-size: 1.4rem;
   font-weight: bold;
+}
+
+.service.scrolled {
+  animation: slideInFromBottom 1s ease-in-out both;
+  opacity: 1;
+}
+
+.service.scrolled:nth-child(2n) {
+  animation-delay: 0.2s;
 }
 
 @media (max-width: 768px) {
   .services__wrapper {
     grid-template-columns: 1fr;
-  }
-  
+  } 
 }

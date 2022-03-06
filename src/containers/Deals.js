@@ -1,3 +1,4 @@
+import { useRef, useCallback } from "react";
 import Deal from '../components/Deal'
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
@@ -6,8 +7,43 @@ import monitor from '../images/gaming-monitor.webp'
 import chair from '../images/gaming-chair.jpg'
 import windowsLaptop from '../images/windows-laptop.jpg'
 import gamingLaptop from '../images/gaming-laptop.jpg'
+import { elementInView } from "../utils/visibilityChecker";
 
 const Deals = () => {
+  const dealsRef = useRef()
+
+  const scrollHandler = useCallback(() => {
+    if (dealsRef.current !== undefined) {
+      handleScroll(dealsRef.current)
+    }
+  })
+
+  function handleScroll(el) {
+    console.log('in deals')
+    if (elementInView(el, 15)) {
+      let next = document.querySelector('.slick-next')
+      let prev = document.querySelector('.slick-prev')
+
+      const nextInterval = setInterval(() => {
+        next.click()
+        if (next.classList.contains('slick-disabled')) {
+          window.clearInterval(nextInterval);
+
+          const prevInterval = setInterval(() => {
+            prev.click()
+            if (prev.classList.contains('slick-disabled')) {
+              window.clearInterval(prevInterval)
+            }
+          }, 10)
+        } 
+      }, 2500);
+      console.log('out of deals');
+      window.removeEventListener('scroll', scrollHandler, true)
+    }
+  }
+
+  window.addEventListener('scroll', scrollHandler, true)
+
   const settings = {
     dots: true,
     infinite: false,
@@ -42,8 +78,9 @@ const Deals = () => {
       }
     ]
   }
+
   return (
-    <div id="deals">
+    <div id="deals" ref={dealsRef}>
       <div className="container">
         <div>
           <span id="deals-anchor"></span>
@@ -73,6 +110,22 @@ const Deals = () => {
               dealLink='https://cgi.sandbox.ebay.com/CHUWI-HeroBook-Pro-Windows10-Laptop-14-11920x1080-8-256G-Intel-N4020-Computer-/110546014622'
               dealTitle="CHUWI HeroBook Pro Windows10 Laptop 14.1''1920x1080 8+256G Intel N4020 Computer"
               dealPrice='USD 279.99'
+            />
+            <Deal 
+              imageSrc={gamingLaptop}
+              imageAlt='gaming laptop'
+              store='Dell'
+              dealLink='https://deals.dell.com/en-us/productdetail/d1g7'
+              dealTitle='G15 Ryzen™ Edition Gaming Laptop'
+              dealPrice='USD 899.99'
+            />
+            <Deal 
+              imageSrc={gamingLaptop}
+              imageAlt='gaming laptop'
+              store='Dell'
+              dealLink='https://deals.dell.com/en-us/productdetail/d1g7'
+              dealTitle='G15 Ryzen™ Edition Gaming Laptop'
+              dealPrice='USD 899.99'
             />
             <Deal 
               imageSrc={gamingLaptop}

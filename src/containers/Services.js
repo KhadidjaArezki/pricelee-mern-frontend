@@ -4,18 +4,18 @@ import coin from "../icons/jam_coin.png";
 import list from "../icons/md_list.png";
 import megaphone from "../icons/megaphone.png";
 
-const Services = () => {
+const Services = () => { 
   return (
     <div id="services">
       <div className="container">
         <h1>Services</h1>
         <div className='services__wrapper'>
-          <Service
+          <Service 
             imageSrc={list}
             imageAlt='a list icon'
             description='wishlist your favorite products to track their prices over time'
           />
-          <Service
+          <Service 
             imageSrc={coin}
             imageAlt='a coin icon'
             description='set the price you would like to pay for the product'

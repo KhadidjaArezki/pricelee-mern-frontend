@@ -10,8 +10,8 @@ const MenuButton = () => {
   }
 
   return (
-    <div className="navbar__toggle-wrapper" onClick={handleClick}>
-      <div className='navbar__toggle'></div>
+    <div className="navbar-toggle-wrapper" onClick={handleClick}>
+      <div className='navbar-toggle'></div>
     </div>
 
   )

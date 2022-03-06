@@ -1,4 +1,4 @@
-import pig from '../images/landing-pic.svg'
+import pig from '../images/pig.svg'
 import magnifier from '../icons/magnifying-glass.png'
 import ScrollDownArrow from '../components/ScrollDownArrow';
 // import coin_big from '../images/coin-big.svg'

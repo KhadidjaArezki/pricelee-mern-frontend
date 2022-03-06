@@ -21,31 +21,35 @@
   
 }
 
-.navbar__toggle-wrapper {
-  display: none;
-}
+/************************** Media Queries **************************/
 
 @media (max-width: 768px) {
   .navbar {
-    height: 100vh;
-    order: -1;
     position: fixed;
     top: 0;
     left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
     background-color: transparent;
     transition: all .5s linear;
     
-    &.open {
-      background-color: rgba($color: $dark-purple, $alpha: 0.8);
-      // border-top: 2px solid rgba($color: $cheese-yellow, $alpha: 0.8);
-      // border-right: 2px solid rgba($color: $cheese-yellow, $alpha: 0.8);
-      // border-bottom: 2px solid rgba($color: $cheese-yellow, $alpha: 0.8);
-      backdrop-filter: blur(5px);
-      // border-top-right-radius: 0.5em;
-      // border-bottom-right-radius: 0.5em;
+    & .navbar__drawer {
+      padding-top: 6rem;
+      transform: translateX(-100%);
+      transition: all .4s linear;
     }
 
-    .nav-menu {
+    &.open {
+      transform: translateX(0);
+      background-color: rgba($color: $dark-purple, $alpha: 0.8);
+      backdrop-filter: blur(5px);
+
+      & .navbar__drawer {
+        transform: translateX(0);
+      }
+    }
+
+    & .nav-menu {
       display: block;
       margin: 0;
 
@@ -76,75 +80,24 @@
         }
       }
     }
-
-    .navbar__toggle-wrapper {
-      display: block;
-      width: 3rem;
-      height: 3rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: transparent;
-      border: 2px solid $cheese-yellow;
-      border-radius: 15%;
-      box-shadow: 2px 2px rgba($color: #000000, $alpha: 0.3);
-      position: relative;
-      cursor: pointer;
-      margin: 2rem 0 1rem 2rem;
-      // transition: all .5s ease-in-out;
-
-      .navbar__toggle,
-      .navbar__toggle:before,
-      .navbar__toggle:after {
-        width: 2rem;
-        height: 0.3rem;
-        background-color: $cheese-yellow;
-        border-radius: 10px;
-        box-shadow: 1px 1px rgba($color: #000000, $alpha: 0.3);
-        transition: all .3s ease-out;
-      }
-      .navbar__toggle:before, .navbar__toggle:after {
-        content: '';
-        position: absolute;
-      }
-
-      .navbar__toggle:before {
-        transform: translateY(-.7rem);
-      }
-      .navbar__toggle:after {
-        transform: translateY(.7rem);
-      }
-    }
-    /*** Animation ***/
-    
-    &.open .navbar__toggle-wrapper{
-      border: 0;
-    }
-    &.open .navbar__toggle {
-      background: transparent;
-      box-shadow: none;
-      transform: translateX(-50px);
-    }
-    &.open  .navbar__toggle:before {
-      transform: rotate(45deg) translate(35px, -35px);
-    }
-    &.open .navbar__toggle:after {
-      transform: rotate(-45deg) translate(35px, 35px);
-    }
-
-    &.open .nav-menu li {
-      opacity: 1;
-      transform: translateX(0);
-      border-bottom: .2px solid rgba($color: $cheese-yellow, $alpha: 0.5);
-    }
-    &.open .nav-menu li:nth-child(1) {
-      border-top: .2px solid rgba($color: $cheese-yellow, $alpha: 0.5);
-    }
-    @for $i from 1 to 4 {
-      &.open .nav-menu li:nth-child(#{$i}) {
-        transition-delay: (0.2s * $i) - 0.1s;
-      }
-    }
   }
+
+  
+    /*** Animation ***/
+    .navbar.open { 
+      & .nav-menu li {
+        opacity: 1;
+        transform: translateX(0);
+        border-bottom: .2px solid rgba($color: $cheese-yellow, $alpha: 0.5);
+      }
+      & .nav-menu li:nth-child(1) {
+        border-top: .2px solid rgba($color: $cheese-yellow, $alpha: 0.5);
+      }
+      @for $i from 1 to 4 {
+        & .nav-menu li:nth-child(#{$i}) {
+          transition-delay: (0.2s * $i) - 0.1s;
+        }
+      }
+    }
 
 }
