@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
+  align-items: end;
 }
 
 .footer h5 {
@@ -48,8 +49,8 @@
 }
 
 .links a {
+  display: inline-block;
   margin-right: 3rem;
-  margin-bottom: 2rem;
   // font-size: 1.2rem;
   text-transform: uppercase;
 
@@ -59,6 +60,12 @@
   // &:hover {
   //   color: $link-hover;
   // }
+}
+
+.links .title a {
+  text-transform: lowercase;
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 
 .copyright small {
@@ -81,7 +88,12 @@
   }
   .links a {
     display: block;
+    margin: 0;
+    padding: 1rem;
     padding-left: 0;
+  }
+  .links .title a {
+    margin-bottom: 1rem;
   }
   .copyright {
     order: 4;
@@ -89,9 +101,10 @@
   .social-media {
     order: 3;
     gap: 4rem;
+  }
 
-    // & a {
-    //   padding: 0 2rem;
-    // }
+  .social-media img {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 }

@@ -51,6 +51,13 @@
 	animation-delay:0s;
 }
 
+
+@media (min-aspect-ratio: 16/9) {
+  .sd-arrows {
+    top: 135%;
+  }
+}
+
 @media (max-width: 1024px) {
   .sd-arrows {
     display: none;

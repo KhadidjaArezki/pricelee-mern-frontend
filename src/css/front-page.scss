@@ -12,11 +12,3 @@
 .front-page:after {
   @include angled(-8deg);
 }
-
-
-// @media (max-aspect-ratio: 8/3) {
-@media (max-width: 768px) {
-  .front-page {
-    min-height: 50vh;
-  }
-}

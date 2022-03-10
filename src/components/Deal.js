@@ -3,7 +3,9 @@ const Deal = ({ imageSrc, imageAlt, store, dealLink, dealTitle, dealPrice }) => 
   <div className="deal">
     <div className="deal__image">
       <small>{store}</small>
-      <img src={imageSrc} alt={imageAlt}/>
+      <a href={dealLink} target='blank'>
+        <img src={imageSrc} alt={imageAlt}/>
+      </a>
     </div>
     <div className="deal__description">
       <a href={dealLink} target='blank'>

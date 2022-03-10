@@ -1,8 +1,8 @@
-import Header from './Header';
-import Footer from './Footer';
-import FrontPage from '../containers/FrontPage'
-import Deals from '../containers/Deals'
-import Services from '../containers/Services'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import FrontPage from './FrontPage'
+import Deals from './Deals'
+import Services from './Services'
 
 const Home = () => {
   return (

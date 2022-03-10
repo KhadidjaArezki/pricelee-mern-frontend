@@ -31,10 +31,16 @@
   text-shadow: 3px 3px rgba($color: #000000, $alpha: 0.3)
 }
 
+@media (min-aspect-ratio: 16/12) and (min-height: 767px) {
+  .hero {
+    margin-top: calc(2vh + 8rem);
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     margin-top: 6rem;
     grid-template-columns: 1fr;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 }

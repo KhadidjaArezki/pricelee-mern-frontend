@@ -1,0 +1,7 @@
+@import 'globals';
+
+.search-results {
+  grid-column: 1 / 4;
+  border: 1px solid $cheese-yellow;
+  border-radius: 25px;
+}

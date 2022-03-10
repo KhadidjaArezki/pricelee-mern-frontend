@@ -1,3 +1,4 @@
+import NavLink from "./NavLink";
 import MenuButton from "./MenuButton";
 const Navbar = () => {
   
@@ -6,13 +7,22 @@ const Navbar = () => {
       <nav className='navbar'>
         <div className='navbar__drawer'>
           <ul className='nav-menu'>
-            <li><a href="/">Home</a></li>
-            <li><a href="#deals-anchor">Deals</a></li>
-            <li><a href="#services">Services</a></li>
+            <NavLink
+              href='/'
+              text='Home'
+            />
+            <NavLink
+              href='/#deals-anchor'
+              text='Deals'
+            />
+            <NavLink
+              href='/#services'
+              text='Services'
+            />
           </ul> 
         </div>
-    </nav>
-    <MenuButton/> 
+      </nav>
+      <MenuButton/> 
     </>
   )
 }

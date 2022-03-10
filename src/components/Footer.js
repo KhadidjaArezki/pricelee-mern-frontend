@@ -8,9 +8,13 @@ const Footer = () => {
     <footer className='footer'>
       <div className="container">
         <div className="links">
-          <h5><span className='hl'>P</span>ricelee</h5>
-          <a href="/about">About</a>
-          <a href="/Support">Support</a>
+        <div className='title'>
+          <a href='/'>
+            <p>pricelee</p>
+          </a>
+        </div>
+          <a href="#">About</a>
+          <a href="#">Support</a>
         </div>
         <div className="email">
           <h5>Contact Info</h5>
