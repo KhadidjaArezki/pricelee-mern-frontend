@@ -12,6 +12,10 @@ const Navbar = () => {
               text='Home'
             />
             <NavLink
+              href='/search'
+              text='Browse'
+            />
+            <NavLink
               href='/#deals-anchor'
               text='Deals'
             />

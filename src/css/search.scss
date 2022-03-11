@@ -4,11 +4,12 @@
   background-image: linear-gradient(to bottom, $pricelee-blue, $lavender-blue);
   color: $dark-purple;
 
-  & main.container {
+  & main .container__inner {
+    // height: 100vh;
     padding-top: 3rem;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(auto-fit, minmax(3rem, 1fr));
+    grid-template-rows: auto 1fr;
     row-gap: 2rem;
     // grid-template-areas: 
     //   "searchbox      searchbox      filters      "
@@ -23,12 +24,19 @@
 
 @media (max-width: 768px) {
   #search {
-    & main.container {
+    & main .container__inner {
       grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr;
 
       & > * {
         grid-column: 1 / -1;
       }
     }
+  }
+}
+
+@media (max-width: 580px) {
+  main.container {
+    margin-left: 5rem;
   }
 }
