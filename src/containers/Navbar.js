@@ -1,5 +1,5 @@
-import NavLink from "./NavLink";
-import MenuButton from "./MenuButton";
+import NavLink from "../components/NavLink";
+import MenuButton from "../components/MenuButton";
 const Navbar = () => {
   
   return (

@@ -15,7 +15,6 @@
 #deals .container {
   margin-top: -2rem;
   padding-bottom: 5rem;
-  // position: relative;
 }
 #deals h1 {
   color: $lavender-blue;
@@ -25,30 +24,10 @@
 
 #deals-anchor {
   content: '';
-  // color: $dark-purple;
   position: absolute;
   top: 25%;
   left: 12%;
 }
-
-/***********************Slick Slider***********************/
-// .slick-slide {
-//   padding-left: 1rem;
-//   padding-right: 1rem;
-// }
-// button.slick-next {
-//   right: -2rem;
-// }
-// button.slick-prev {
-//   left: -3rem;
-// }
-// button.slick-next:before, button.slick-prev:before {
-//   font-size: 3rem;
-// }
-// .slick-dots li button:before {
-//   font-size: 1rem;
-// }
-/**********************************************************/
 
 /**********************Splide Slider***********************/
 button.splide__arrow {
@@ -96,6 +75,7 @@ button.splide__arrow {
 }
 
 /************************** Media Queries **************************/
+
 @media (min-aspect-ratio: 16/12) {
   #deals-anchor {
     top: 33%;

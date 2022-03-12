@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
-import Title from './Title';
-import User from './User'
+import Title from '../components/Title';
+import User from '../components/User'
 
 const Header = () => {
   return (

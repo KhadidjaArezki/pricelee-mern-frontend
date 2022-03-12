@@ -1,7 +1,6 @@
 @import 'globals';
 
 .pagination-wrapper {
-  max-width: 60%;
   display: flex;
   justify-content: center;
 }
@@ -17,36 +16,27 @@
 
   & > li {
     cursor: pointer;
-    padding: .5rem 1rem;
 
     &:not(:last-child) {
       border-right: 1px solid $cheese-yellow;
     }
-    
-    &:hover {
+
+    &.selected {
       background-color: lighten($color: $cheese-yellow, $amount: 5%);
     }
-  }
+    &:hover {
+      background-color: lighten($color: $cheese-yellow, $amount: 18%);
+    }
 
-  
+    & a {
+      display: inline-block;
+      padding: .5rem 1rem;
+    }
+  }  
 }
 
 @media (max-width: 768px) {
-  .pagination-wrapper {
-    min-width: 100%;
-  }
   .pagination {
     margin: 2rem 0;
-
-    & > li {
-      padding: .5rem 0;
-
-      // &:first-child a {
-      //   padding-left: 1rem;
-      // }
-      // &:last-child a {
-      //   padding-right:1rem;
-      // }
-    }
   }
 }

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './containers/Home';
 import Search from './containers/Search';
-import Login from './components/Login';
+import Signup from './containers/Signup';
 import NotFound from './components/NotFound';
 
 function App() {
@@ -11,14 +11,8 @@ function App() {
           <Route exact path='/'>
             <Home/>
           </Route>
-          {/* <Route path='/about'>
-            <About/>
-          </Route>
-          <Route path='/contact'>
-            <Contact/>
-          </Route> */}
-          <Route path='/login'>
-            <Login/>
+          <Route path='/signup'>
+            <Signup/>
           </Route>
           {/* <Route path='/logout'>
             <Logout/>
