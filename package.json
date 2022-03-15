@@ -22,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sass": "sass ./src/css/index.scss ./build/styles.css"
+    "sass": "sass ./src/css/index.scss ./build/styles.css",
+    "server": "json-server -p3001 --watch db.json"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "json-server": "^0.17.0",
     "node-sass": "^7.0.1"
   }
 }

@@ -21,7 +21,7 @@ const Footer = () => {
           <a href="mailto:khadidjaarezki999@gmail.com"><img src={mail} alt=""/>khadidjaarezki999@gmail.com</a>
         </div>
         <div className="copyright">
-          <small>Copyright © Pricelee 2022</small>
+          <small>Copyright © Pricelee 2022 </small>
         </div>
         <div className="social-media">
           <a href="/"><img src={github} alt="github icon"/></a>

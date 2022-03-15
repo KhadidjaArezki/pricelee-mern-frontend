@@ -2,7 +2,8 @@
 
 #search {
   min-height: 100vh;
-  background-image: linear-gradient(to bottom, $pricelee-blue, $lavender-blue);
+  // background-image: linear-gradient(to bottom, $lavender-blue, $light-eggplant);
+  background-color: $lavender-blue;
   color: $dark-purple;
 
   & main .container__inner {

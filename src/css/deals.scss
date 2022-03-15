@@ -37,41 +37,52 @@ button.splide__arrow {
 /**********************************************************/
 
 /************************** Deal **************************/
-.deal {
-  display: flex;
+#deals {
+
+  & .deal {
   flex-direction: column;
+  align-items: start;
   gap: 1rem;
   padding-bottom: 4rem;
-}
+  height: 30rem;
 
-.deal__image {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: #ffffff;
-  align-items: center;
-}
+    & .deal__image {
+      width: 100%;
+      background-color: #ffffff;
+      align-items: center;
+      
+      & img {
+      width: 18rem;
+      height: 18rem;
+      }
 
-.deal__image img {
-  width: 18rem;
-  height: 18rem;
-  object-fit: contain;
-}
+      & small {
+        color: rgba($color: $dark-purple, $alpha: 0.5);
+        align-self: start;
+        padding-left: .3rem;
+      }
+    }
+    
+    & .deal__description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-.deal__image small {
-  color: rgba($color: $dark-purple, $alpha: 0.5);
-  align-self: start;
-  padding-left: .3rem;
-}
-
-.deal__description a:link {
-  color: $deal-link;
-}
-.deal__description a:visited {
-  color: $deal-link-visited;
-}
-.deal__description a:hover {
-  color: $deal-link-hover;
+      & small {
+        font-weight: bold;
+      }
+      
+      & a:link {
+        color: $deal-link;
+      }
+      & a:visited {
+        color: $deal-link-visited;
+      }
+      & a:hover {
+        color: $deal-link-hover;
+      }
+    }
+  }
 }
 
 /************************** Media Queries **************************/
@@ -97,11 +108,6 @@ button.splide__arrow {
     padding-left: 3rem;
     padding-right: 3rem;
   } 
-
-  .deal__image img {
-    width: 18rem;
-    height: 18rem;
-  }
 
   button.splide__arrow {
     width: 2rem;

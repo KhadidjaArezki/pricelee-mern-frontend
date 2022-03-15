@@ -20,7 +20,7 @@
     font-size: 1rem;
     color: whitesmoke;
     margin: 0;
-    background-color: rgba($color: $dark-purple, $alpha: 0.5);
+    background-color: rgba($color: $dark-purple, $alpha: 0.3);
     border: 2px solid $cheese-yellow;
     padding: 0.5rem 1rem;
     border-radius: 35px;
@@ -65,11 +65,14 @@
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       box-shadow: 1px 1px rgba($color: black, $alpha: 0.3);
-      // background-color: lighten($color: $dark-purple, $amount: 8%);
-      background-color: rgba($color: $dark-purple, $alpha: 0.5);
+      background-color: rgba($color: $dark-purple, $alpha: 0.3);
       font-size: 1rem;
       color: whitesmoke;
       outline: none;
+
+      & option {
+        background-color: rgba($color: $dark-purple, $alpha: 1.0);
+      }
     }
 
     & label {
@@ -95,5 +98,10 @@
 @media (max-width: 768px) {
   .filters {
     margin-left: 0;
+
+    & > .filters__label {
+      border-radius: 15px;
+      font-size: 1.2rem;
+    }
   }
 }

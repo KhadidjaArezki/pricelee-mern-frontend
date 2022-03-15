@@ -21,10 +21,10 @@ const Service = ({ imageSrc, imageAlt, description }) => {
 
   return (
     <div className="media service" ref={serviceRef}>
-      <div className="media__image">
+      <div className="media__image service__image ">
         <img src={imageSrc} alt={imageAlt}/>
       </div>
-      <div className="media__description">
+      <div className="media__description service__description ">
         <p>{description}</p>
       </div>
     </div> 

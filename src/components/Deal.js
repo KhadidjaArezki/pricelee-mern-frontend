@@ -1,17 +1,17 @@
 const Deal = ({ imageSrc, imageAlt, store, dealLink, dealTitle, dealPrice }) => {
   return  (
-  <div className="deal">
-    <div className="deal__image">
+  <div className="media deal">
+    <div className="media__image deal__image">
       <small>{store}</small>
       <a href={dealLink} target='blank'>
         <img src={imageSrc} alt={imageAlt}/>
       </a>
     </div>
-    <div className="deal__description">
+    <div className="media__description deal__description">
       <a href={dealLink} target='blank'>
         <p>{dealTitle}</p>
       </a>
-      <small>price: {dealPrice}</small>
+      <small>{dealPrice}</small>
     </div>
   </div>
   )
