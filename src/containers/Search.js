@@ -3,7 +3,6 @@ import Footer from './Footer'
 import Filters from './Filters'
 import SearchResults from './SearchResults'
 import SearchBox from '../components/SearchBox'
-import { searchResultsData } from '../utils/dummyData'
 
 const Search = () => {
   return (
