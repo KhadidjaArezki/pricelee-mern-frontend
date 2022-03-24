@@ -6,7 +6,7 @@ const Filters = () => {
   const [open, setOpen] = useState(false)
   const filtersRef = useRef()
   
-  const handleClick = () => {
+  const handleLabelClick = () => {
     const filters = filtersRef.current
     filters.classList.toggle('open')
     setOpen(!open)
@@ -19,7 +19,7 @@ const Filters = () => {
     >
       <label
         className='filters__label'
-        onClick={handleClick}
+        onClick={handleLabelClick}
         >
       Search Filters
       </label>

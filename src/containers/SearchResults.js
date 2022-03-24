@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import PaginatedResults from './PaginatedResults'
 
-const SearchResults = ({ results, itemsPerPage }) => {
-  const [isReceived, setReceived] = useState(true)
+const SearchResults = ({ itemsPerPage }) => {
+  const search = useSelector(({ search }) => search)
+  const isReceived = search.isReceived
+  const results = search.results
 
   const showNotReceived = () => 
     <div className="not-received">
@@ -10,11 +12,11 @@ const SearchResults = ({ results, itemsPerPage }) => {
     </div>
   
   const showResults = (results, itemsPerPage) => 
-      <PaginatedResults
-        results={results}
-        itemsPerPage={itemsPerPage}
-      />
-      
+    <PaginatedResults
+      results={results}
+      itemsPerPage={itemsPerPage}
+    />
+ 
   return (
     <div className="search-results-wrapper">
       { isReceived ?  showResults(results, itemsPerPage) : showNotReceived() }

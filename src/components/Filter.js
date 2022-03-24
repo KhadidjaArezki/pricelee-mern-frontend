@@ -2,9 +2,14 @@ const Filter = ({ name, options }) => {
   return (
     <div className='filter'>
       <select name={name} id={name + '-input'}>
-      <option selected>Select...</option>
+      <option defaultValue>Select...</option>
         {options.map(option => 
-          <option value={option.value}>{option.text}</option>
+          <option
+            key={ option.value }
+            value={ option.value }
+          >
+            { option.text }
+          </option>
         )}
       </select>
       <label htmlFor={name + '-input'}>{name}</label>

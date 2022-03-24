@@ -12,7 +12,6 @@ const Search = () => {
         <div className="container__inner">
           <SearchBox/>
           <SearchResults
-            results={searchResultsData}
             itemsPerPage={4}/>
           <Filters/>
         </div>

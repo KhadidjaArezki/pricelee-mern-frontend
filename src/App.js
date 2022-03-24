@@ -14,9 +14,6 @@ function App() {
           <Route path='/signup'>
             <Signup/>
           </Route>
-          {/* <Route path='/logout'>
-            <Logout/>
-          </Route> */}
           <Route path='/search'>
             <Search/>
           </Route>

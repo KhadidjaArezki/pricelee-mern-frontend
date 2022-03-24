@@ -3,6 +3,11 @@
 .search-results-wrapper {
   grid-column: 1 / 4;
   grid-row: 2 / 3;
+   & .not-received {
+     font-weight: bold;
+     text-align: center;
+     padding-top: 5rem;
+   }
 
   & .search-result { 
     color: whitesmoke;

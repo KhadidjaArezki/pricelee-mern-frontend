@@ -2,7 +2,6 @@
 
 #search {
   min-height: 100vh;
-  // background-image: linear-gradient(to bottom, $lavender-blue, $light-eggplant);
   background-color: $lavender-blue;
   color: $dark-purple;
 
@@ -17,6 +16,7 @@
 
 #search .footer {
   background-color: transparent;
+  margin-top: 5rem;
 }
 
 @media (max-width: 768px) {
