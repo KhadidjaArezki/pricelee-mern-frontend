@@ -33,7 +33,7 @@ export const filterData = [
       text: 'Books',
     },{
       value: '12576',
-      text: '>Business & Industrial',
+      text: 'Business & Industrial',
     },{
       value: '625',
       text: 'Cameras & Photo',

@@ -3,7 +3,7 @@ import PaginatedResults from './PaginatedResults'
 
 const SearchResults = ({ itemsPerPage }) => {
   const search = useSelector(({ search }) => search)
-  const isReceived = search.isReceived
+  const isReceived = search.isReceivedResults
   const results = search.results
 
   const showNotReceived = () => 
@@ -11,15 +11,24 @@ const SearchResults = ({ itemsPerPage }) => {
       <p>Your search results will appear here.</p>
     </div>
   
-  const showResults = (results, itemsPerPage) => 
-    <PaginatedResults
-      results={results}
-      itemsPerPage={itemsPerPage}
-    />
- 
+  const showResults = () => {
+    if (results.length === 0) {
+      return (
+        <div className="not-received">
+          <p>No matching results were found for your search</p>
+        </div>
+      )
+    }
+    return (
+      <PaginatedResults
+        itemsPerPage={itemsPerPage}
+      />
+    )
+  }
+
   return (
     <div className="search-results-wrapper">
-      { isReceived ?  showResults(results, itemsPerPage) : showNotReceived() }
+      { isReceived ?  showResults() : showNotReceived() }
     </div>
   )
 }

@@ -3,6 +3,7 @@
 .search-results-wrapper {
   grid-column: 1 / 4;
   grid-row: 2 / 3;
+
    & .not-received {
      font-weight: bold;
      text-align: center;
@@ -10,6 +11,7 @@
    }
 
   & .search-result { 
+    position: relative;
     color: whitesmoke;
     background-color: rgba(black, 0.5);
     border-radius: 15px;
@@ -25,10 +27,17 @@
       align-items: start;
       padding: 2rem;
 
-      & .media__description h5 {
-        font-weight: 500;
-        margin-top: 0;
-        color: whitesmoke;
+      & .media__description {
+        
+        & h5 {
+          font-weight: 500;
+          margin-top: 0;
+          color: whitesmoke;
+        }
+
+        & small {
+          font-weight: bold;
+        }
       }
     }
   }
@@ -41,7 +50,7 @@
     & .search-results {
 
       & .media {
-        align-items: center;
+        padding-bottom: 6rem;
 
         & .media__image  {
           width: 100%;

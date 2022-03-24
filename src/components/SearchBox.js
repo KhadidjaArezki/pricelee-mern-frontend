@@ -10,12 +10,23 @@ const SearchBox = () => {
     const searchKeywords = event.target.value
     dispatch(setSearchKeywords(searchKeywords))
   }
-  
+
+  const cleanFilters = (filters) => {
+    for (const field in filters) {
+      if (filters[field] === '') {
+        delete filters[field]
+      }
+    }
+    return filters
+  }
+
   const handleSearch = (event) => {
     event.preventDefault()
     const searchObject = {
       keywords: search.keywords,
-      ...search.filters
+      ...cleanFilters({
+        ...search.filters
+      })
     }
     dispatch(getResults(searchObject))
   }
@@ -27,12 +38,12 @@ const SearchBox = () => {
       <input
         type="search"
         name='search'
-        placeholder="Search..."
+        placeholder= { search.keywords || "Search..."}
         onChange={ handleSearchChange }
       />
-      <div className='searchbox__btn'>
+      <button className='searchbox__btn'>
         <img src={magnifier} alt="magnifying glass"/>
-      </div>
+      </button>
     </form>
   )
 }

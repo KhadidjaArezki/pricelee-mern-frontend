@@ -5,16 +5,20 @@ const searchSlice = createSlice({
   name: 'search',
   initialState: {
     keywords: '',
-    filters: {},
+    filters: {
+      sortOrder: "PricePlusShippingLowest"
+    },
     results: [],
-    isReceived: false
+    isReceivedResults: false,
+    currentPageResults: null,
+    resultsOffset: 0
   },
   reducers: {
     setResults(state, action) {
       return {
         ...state,
         results: action.payload,
-        isReceived: true
+        isReceivedResults: true
       }
     },
     setSearchKeywords(state, action) {
@@ -29,12 +33,30 @@ const searchSlice = createSlice({
         filters: action.payload
       }
     },
+    setCurrentPageResults(state, action) {
+      return {
+        ...state,
+        currentPageResults: action.payload
+      }
+    },
+    setResultsOffset(state, action) {
+      return {
+        ...state,
+        resultsOffset: action.payload
+      }
+    }
   }
 })
 
-export const { setResults, setSearchFilters, setSearchKeywords } = searchSlice.actions
+export const { setResults,
+              setSearchFilters,
+              setSearchKeywords,
+              setCurrentPageResults,
+              setResultsOffset
+            } = searchSlice.actions
 
 export const getResults = (searchObject) => {
+  console.log(searchObject);
   return async (dispatch) => {
     const results = await productsService.search(searchObject)
     dispatch(setResults(results))
