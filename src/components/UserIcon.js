@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux'
 
 const UserIcon = () => {
   const user = useSelector(({ user }) => user)
+  const isLogged = user.username && user.token
   const userIconRef = useRef()
   
   useEffect(() => {
-    if ( !user.username && !user.token ) {
+    if ( !isLogged ) {
       userIconRef.current.classList.add('hidden')
     }
     else {

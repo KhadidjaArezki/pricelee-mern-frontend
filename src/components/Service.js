@@ -5,11 +5,11 @@ const Service = ({ imageSrc, imageAlt, description }) => {
   const serviceRef = useRef()
 
   const handleScrollAnimation = (el) => {
-      if (elementInView(el, 1.25)) {
-        el.classList.add("scrolled");
-      } else if (elementOutofView(el)) {
-        el.classList.remove("scrolled");
-      }
+    if (elementInView(el, 1.25)) {
+      el.classList.add("scrolled");
+    } else if (elementOutofView(el)) {
+      el.classList.remove("scrolled");
+    }
   }
   
   window.addEventListener("scroll", () => { 
@@ -20,12 +20,12 @@ const Service = ({ imageSrc, imageAlt, description }) => {
   });
 
   return (
-    <div className="media service" ref={serviceRef}>
+    <div className="media service" ref={ serviceRef }>
       <div className="media__image service__image ">
-        <img src={imageSrc} alt={imageAlt}/>
+        <img src={ imageSrc } alt={ imageAlt }/>
       </div>
       <div className="media__description service__description ">
-        <p>{description}</p>
+        <p>{ description }</p>
       </div>
     </div> 
   )

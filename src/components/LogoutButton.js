@@ -4,11 +4,12 @@ import { logoutUser } from '../reducers/userReducer'
 
 const LogoutButton = () => {
   const user = useSelector(({ user }) => user)
+  const isLogged = user.username && user.token
   const logoutButtonRef = useRef()
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if ( !user.username && !user.token ) {
+    if ( !isLogged ) {
       logoutButtonRef.current.classList.add('hidden')
     }
     else {

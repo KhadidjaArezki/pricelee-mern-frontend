@@ -3,10 +3,11 @@ import { useSelector } from 'react-redux'
 
 const LoginButton = () => {
   const user = useSelector(({ user }) => user)
+  const isLogged = user.username && user.token
   const logintButtonRef = useRef()
 
   useEffect(() => {
-    if ( user.username && user.token ) {
+    if ( isLogged ) {
       logintButtonRef.current.classList.add('hidden')
     }
     else {

@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux'
 import NavLink from "../components/NavLink";
 import MenuButton from "../components/MenuButton";
 const Navbar = () => {
-  
+  const user = useSelector(({ user }) => user)
+  const isLogged = user.username && user.token
+
   return (
     <>
       <nav className='navbar'>
@@ -15,6 +18,12 @@ const Navbar = () => {
               href='/search'
               text='Browse'
             />
+            { isLogged &&
+              <NavLink
+                href='/tracker'
+                text='Tracker'
+              />
+            }
             <NavLink
               href='/#deals-anchor'
               text='Deals'

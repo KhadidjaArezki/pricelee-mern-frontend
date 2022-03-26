@@ -1,0 +1,29 @@
+@import "globals";
+
+#tracker {
+  min-height: 100vh;
+  background-color: $lavender-blue;
+  color: $dark-purple;
+
+  & .tracker-items-wrapper {
+    position: relative;
+    width: 60%;
+    min-height: 60vh;
+
+    & .not-received {
+       & .cta-sm {
+        position: static;
+        margin-top: 3rem;
+       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #tracker {
+
+    & .tracker-items-wrapper {
+      width: 100%;
+    }
+  }
+}

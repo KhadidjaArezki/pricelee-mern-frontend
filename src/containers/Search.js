@@ -12,7 +12,7 @@ const Search = () => {
         <div className="container__inner">
           <SearchBox/>
           <SearchResults
-            itemsPerPage={4}/>
+            itemsPerPage={ 4 }/>
           <Filters/>
         </div>
       </main>

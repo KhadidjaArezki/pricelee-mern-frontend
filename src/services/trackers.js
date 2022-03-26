@@ -1,10 +1,8 @@
 const axios = require('axios')
-import { useSelector } from 'react-redux'
 
-const token = useSelector(({ user }) => user.token)
 const baseUrl = process.env.REACT_APP_BASE_TRACKERS_URL
 
-const getAll = async () => {
+const getAll = async (token) => {
   const config = {
     headers: { Authorization: `bearer ${ token }` },
   }
@@ -12,7 +10,7 @@ const getAll = async () => {
   return response.data
 }
 
-const trackProduct = async (productObject) => {
+const createNew = async (productObject, token) => {
   const config = {
     headers: { Authorization: `bearer ${ token }` },
   }
@@ -23,5 +21,5 @@ const trackProduct = async (productObject) => {
 
 export default {
   getAll,
-  trackProduct
+  createNew
 }

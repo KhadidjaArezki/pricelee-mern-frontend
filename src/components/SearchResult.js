@@ -1,21 +1,19 @@
+import { useRef, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-// import { trackProduct } from '../reducers/TrackerReducer'
+import TrackItemModal from './TrackItemModal'
 
 const SearchResult = ({ result }) => {
   const user = useSelector(({ user }) => user)
-
-  const handleTrack = () => {
-
-  }
+  const isLogged = user.username && user.token
+  const modalRef = useRef()
 
   const getCta = () => {
-    if (user.username && user.token) {
+    if (isLogged) {
       return (
         <button
           className="cta cta-sm"
-          onClick={ handleTrack }
-        >
-          Add to Tracker
+          onClick={ () => modalRef.current.show() }
+        >Add to Tracker
         </button>
       )
     }
@@ -46,6 +44,12 @@ const SearchResult = ({ result }) => {
       </div>
       
       { getCta() }
+      
+      <TrackItemModal
+        hook={ modalRef }
+        innerRef={ modalRef }
+        result={ result }
+      />
 
     </div>
   )
