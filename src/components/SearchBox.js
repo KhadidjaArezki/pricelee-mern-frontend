@@ -36,13 +36,14 @@ const SearchBox = () => {
       className="searchbox"
       onSubmit={ handleSearch }>
       <input
-        type="search"
+        type='search'
         name='search'
-        placeholder= { search.keywords || "Search..."}
+        required={ true }
+        placeholder= 'Search...'
         onChange={ handleSearchChange }
       />
       <button className='searchbox__btn'>
-        <img src={magnifier} alt="magnifying glass"/>
+        <img src={magnifier} alt='magnifying glass'/>
       </button>
     </form>
   )

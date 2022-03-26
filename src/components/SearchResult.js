@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import TrackItemModal from './TrackItemModal'
 
@@ -12,7 +12,7 @@ const SearchResult = ({ result }) => {
       return (
         <button
           className="cta cta-sm"
-          onClick={ () => modalRef.current.show() }
+          onClick={ () => modalRef.current.showModal() }
         >Add to Tracker
         </button>
       )
@@ -26,7 +26,7 @@ const SearchResult = ({ result }) => {
 
   return (
     <div
-      className='media search-result'
+      className='media item'
       data-id={result.productId}
     >
       <div className="media__image">
@@ -46,8 +46,7 @@ const SearchResult = ({ result }) => {
       { getCta() }
       
       <TrackItemModal
-        hook={ modalRef }
-        innerRef={ modalRef }
+        ref={ modalRef }
         result={ result }
       />
 

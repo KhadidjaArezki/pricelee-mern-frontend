@@ -1,8 +1,8 @@
 import { forwardRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { trackProduct } from '../reducers/trackerReducer'
+import { updateAlert } from '../reducers/trackerReducer'
 
-const TrackItemModal = forwardRef(({ result }, ref) => {
+const EditItemModal = forwardRef(({ item }, ref) => {
   const user = useSelector(({ user }) => user)
   const token = user.token
   const dispatch = useDispatch()
@@ -11,17 +11,14 @@ const TrackItemModal = forwardRef(({ result }, ref) => {
     ref.current.close()
   }
 
-  const createAlert = (event) => {
-    dispatch(trackProduct({
-      productId      : result.productId,
-      productName    : result.productName,
-      productLink    : result.productLink,
-      productImage   : result.productImage,
-      productPrice   : result.productPrice,
-      productCurrency: result.productCurrency,
-      productStore   : result.productStore,
-      desiredPrice   : event.target.desiredPrice.value
-    }, token))
+  const editAlert = (event) => {
+    dispatch(updateAlert(
+      item.alertId, 
+      {
+        desiredPrice: event.target.desiredPrice.value
+      },
+      token
+    ))
   }
 
   return (
@@ -29,27 +26,27 @@ const TrackItemModal = forwardRef(({ result }, ref) => {
       ref={ ref }
       className='modal'
     >
-      <h4>Add to Tracker</h4>
-      <p> { result.productName }</p>
+      <h4> Edit Tracker Item</h4>
+      <p> { item.productName }</p>
 
       <form
         method='dialog'
-        onSubmit={ createAlert }
+        onSubmit={ editAlert }
       >
         <label>Desired price: </label>
         <input
           type="text"
           name='desiredPrice'
-          placeholder={ result.productPrice }
+          placeholder={ item.desiredPrice }
           required={ true }
         />
 
         <button
           type='submit'
-          id="add"
+          id="edit"
           className='cta cta-sm'
-          name='add'
-          >add
+          name='edit'
+          >save
         </button> 
       </form>
       
@@ -65,4 +62,5 @@ const TrackItemModal = forwardRef(({ result }, ref) => {
   )
 })
 
-export default TrackItemModal
+export default EditItemModal
+

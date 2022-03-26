@@ -19,7 +19,27 @@ const createNew = async (productObject, token) => {
   return response.data
 }
 
+const update = async (id, alertToUpdate, token) => {
+  const config = {
+    headers: { Authorization: `bearer ${ token }` },
+  }
+
+  const response = await axios.put(`${ baseUrl }/${ id }`, alertToUpdate, config)
+  return response.data
+}
+
+const remove = async (id, token) => {
+  const config = {
+    headers: { Authorization: `bearer ${ token }` },
+  }
+
+  const response = await axios.delete(`${ baseUrl }/${ id }`, config)
+  return response.data
+}
+
 export default {
   getAll,
-  createNew
+  createNew,
+  update,
+  remove
 }

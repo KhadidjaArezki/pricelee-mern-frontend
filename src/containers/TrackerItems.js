@@ -1,19 +1,29 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getTracker } from '../reducers/trackerReducer'
 import PaginatedTracker from './PaginatedTracker'
 
 const TrackerItems = ({ itemsPerPage }) => {
   const user = useSelector(({ user }) => user)
+  const token = user.token
   const isLogged = user.username && user.token
   const tracker = useSelector(({ tracker }) => tracker)
   const items = tracker.items
+  console.log(items);
 
-  const showNotLogged = () => 
-    <>
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(getTracker(token))
+  }, [])
+
+  const showNotLogged = () =>
+    <div className="not-received">
       <p>Login to see your tracked products</p>
       <button className="cta cta-sm">
         <a href='/signup'>Login</a>
       </button>
-    </>
+    </div>
   
   const showItems = () => {
     if (items.length === 0) {
@@ -34,7 +44,7 @@ const TrackerItems = ({ itemsPerPage }) => {
   }
 
   return (
-    <div className="tracker-items-wrapper">
+    <div className="items-wrapper">
       { isLogged ? showItems() : showNotLogged() }
     </div>
   )

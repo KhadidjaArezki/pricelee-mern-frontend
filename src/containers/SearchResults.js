@@ -1,10 +1,18 @@
-import { useSelector } from 'react-redux'
+import { useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux'
+import { setResultsOffset } from '../reducers/searchReducer'
 import PaginatedResults from './PaginatedResults'
 
 const SearchResults = ({ itemsPerPage }) => {
   const search = useSelector(({ search }) => search)
   const isReceived = search.isReceivedResults
   const results = search.results
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setResultsOffset(0))
+  }, [ results ])
 
   const showNotReceived = () => 
     <div className="not-received">
@@ -27,7 +35,7 @@ const SearchResults = ({ itemsPerPage }) => {
   }
 
   return (
-    <div className="search-results-wrapper">
+    <div className="items-wrapper">
       { isReceived ?  showResults() : showNotReceived() }
     </div>
   )

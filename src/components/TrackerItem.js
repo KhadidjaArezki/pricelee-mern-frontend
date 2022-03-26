@@ -1,20 +1,15 @@
-import { useDispatch } from 'react-redux'
+import { useRef } from 'react'
+import EditItemModal from './EditItemModal'
+import DeleteItemModal from './DeleteItemModal'
 import {  } from '../reducers/trackerReducer'
 
 const TrackerItem = ({ item }) => { 
-  const dispatch = useDispatch()
-
-  const editAlert = () => {
-
-  }
-
-  const deleteAlert = () => {
-
-  }
+  const editModalRef = useRef()
+  const delModalRef = useRef()
 
   return (
     <div
-      className="media tracker-item"
+      className="media item"
       data-id={ item.alertId }
     >
       <div className="media__image">
@@ -29,18 +24,34 @@ const TrackerItem = ({ item }) => {
           <h5>{ item.productName }</h5>
         </a>
         <small>{ item.productCurrency } { item.productPrice }</small>
+        <small><span>Price difference: </span>{ item.productCurrency } { item.productPriceDiff }</small>
+        <small><span>Desired price: </span>{ item.productCurrency } { item.desiredPrice }</small>
       </div>
 
       <button
+        id='edit'
         className="cta cta-sm"
-        onClick={ editAlert }
+        onClick={ () => editModalRef.current.showModal() }
       >edit
       </button>
+
        <button
+        id='del'
         className="cta cta-sm"
-        onClick={ deleteAlert }
+        onClick={ () => delModalRef.current.showModal() }
       >delete
-      </button>  
+      </button>
+      
+      <EditItemModal
+        ref={ editModalRef }
+        item={ item }
+      />
+
+      <DeleteItemModal
+        ref={ delModalRef }
+        item={ item }
+      />
+
     </div>
   )
  }
