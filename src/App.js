@@ -4,28 +4,32 @@ import Search from './containers/Search'
 import Signup from './containers/Signup'
 import Tracker from './containers/Tracker'
 import NotFound from './components/NotFound'
+import Notification from './components/Notification'
 
 function App() {
   return (
-    <Router>
-        <Switch>
-          <Route exact path='/'>
-            <Home/>
-          </Route>
-          <Route path='/signup'>
-            <Signup/>
-          </Route>
-          <Route path='/search'>
-            <Search/>
-          </Route>
-          <Route path='/tracker'>
-            <Tracker/>
-          </Route>
-          <Route path='*'>
-            <NotFound />
-          </Route>
-        </Switch>
-    </Router>
+    <>
+      <Notification/>
+      <Router>
+          <Switch>
+            <Route exact path='/'>
+              <Home/>
+            </Route>
+            <Route path='/signup'>
+              <Signup/>
+            </Route>
+            <Route path='/search'>
+              <Search/>
+            </Route>
+            <Route path='/tracker'>
+              <Tracker/>
+            </Route>
+            <Route path='*'>
+              <NotFound />
+            </Route>
+          </Switch>
+      </Router>
+    </>
   )
 }
 

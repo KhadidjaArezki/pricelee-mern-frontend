@@ -16,13 +16,13 @@ const LoginButton = () => {
   }, [ user ])
 
   return (
-    <li
+    <button
       id='login'
       className='hidden'
       ref={ logintButtonRef }
     >
       <a href="/signup">Login</a>
-    </li>
+    </button>
   )
 }
 

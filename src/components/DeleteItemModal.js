@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteAlert } from '../reducers/trackerReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const DeleteItemModal = forwardRef(({ item }, ref) => {
   const user = useSelector(({ user }) => user)
@@ -13,6 +14,10 @@ const DeleteItemModal = forwardRef(({ item }, ref) => {
 
   const removeAlert = () => {
     dispatch(deleteAlert(item.alertId, token))
+    dispatch(setNotification({
+      message: 'item successfully removed from your tracker',
+      type: 'success'
+    }, 3))
   }
 
   return (
@@ -23,15 +28,19 @@ const DeleteItemModal = forwardRef(({ item }, ref) => {
       <p> Are you sure you want to delete</p>
       <p> { item.productName }</p>
       <p>from you tracker ?</p>
-
-      <button
-        type='submit'
-        id="delete"
-        className='cta cta-sm'
-        name='delete'
-        onClick={ removeAlert }
-        >delete
-      </button> 
+      
+      <form
+        method='dialog'
+        onSubmit={ removeAlert }
+      >
+        <button
+          type='submit'
+          id="delete"
+          className='cta cta-sm'
+          name='delete'
+          >delete
+        </button> 
+      </form>
       
       <button
           type='botton'

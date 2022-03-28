@@ -9,7 +9,6 @@ const TrackerItems = ({ itemsPerPage }) => {
   const isLogged = user.username && user.token
   const tracker = useSelector(({ tracker }) => tracker)
   const items = tracker.items
-  console.log(items);
 
   const dispatch = useDispatch()
   
@@ -26,16 +25,19 @@ const TrackerItems = ({ itemsPerPage }) => {
     </div>
   
   const showItems = () => {
-    if (items.length === 0) {
-      return (
-        <div className="not-received">
-          <p>Your tracked products will appear here.</p>
-          <button className="cta cta-sm">
-            <a href='/search'>Start tracking</a>
-          </button>
-        </div>
-      )
-    }
+    setTimeout(() => {
+      if (items.length === 0) {
+        return (
+          <div className="not-received">
+            <p>Your tracked products will appear here.</p>
+            <button className="cta cta-sm">
+              <a href='/search'>Start tracking</a>
+            </button>
+          </div>
+        )
+      }
+    }, 100)
+
     return (
       <PaginatedTracker
         itemsPerPage={ itemsPerPage }

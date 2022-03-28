@@ -12,6 +12,8 @@ $link-active: lighten($cheese-yellow, 50%);
 $deal-link: #ffffff;
 $deal-link-visited: lighten($light-eggplant, 40%);
 $deal-link-hover: lighten($light-eggplant, 50%);
+$error-red: rgba(255, 0, 0, .7);
+$success-green: rgba(0, 255, 0, .8);
 
 $main-font: 'Roboto', sans-serif;
 $heading-font: 'PT Sans Caption', sans-serif;

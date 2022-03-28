@@ -29,14 +29,13 @@ const TrackerItem = ({ item }) => {
       </div>
 
       <button
-        id='edit'
         className="cta cta-sm"
+        id='edit'
         onClick={ () => editModalRef.current.showModal() }
       >edit
       </button>
 
        <button
-        id='del'
         className="cta cta-sm"
         onClick={ () => delModalRef.current.showModal() }
       >delete

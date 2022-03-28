@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { trackProduct } from '../reducers/trackerReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const TrackItemModal = forwardRef(({ result }, ref) => {
   const user = useSelector(({ user }) => user)
@@ -22,6 +23,11 @@ const TrackItemModal = forwardRef(({ result }, ref) => {
       productStore   : result.productStore,
       desiredPrice   : event.target.desiredPrice.value
     }, token))
+
+    dispatch(setNotification({
+      message: 'item successfully added to your tracker',
+      type: 'success'
+    }, 3))
   }
 
   return (

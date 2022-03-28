@@ -33,16 +33,23 @@ const trackerSlice = createSlice({
     updateDesiredPrice(state, action) {
       const updatedAlert = action.payload
       const id = updatedAlert.alertId
-      return state.items.map(item => 
-        item.alertId !== id ?
-          item
-          : updatedAlert
-      )
+      return {
+        ...state,
+        items: state.items.map(item => 
+          item.alertId !== id ?
+            item
+            : updatedAlert
+        )
+      }
     },
     removeAlert(state, action) {
       const id = action.payload.id
-      return state.items.filter(item => 
-        item.alertId !== id)
+      return {
+        ...state,
+        items: state.items.filter(item =>
+          item.alertId !== id
+        )
+      }
     }
   }
 })

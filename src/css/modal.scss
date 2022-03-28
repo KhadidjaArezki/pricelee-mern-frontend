@@ -26,7 +26,7 @@
   & .cta-sm {
     text-transform: uppercase;
       &#add,
-      &#edit,
+      &#save,
       &#delete {
         right: 8rem;
       }
@@ -44,7 +44,9 @@
     width: 90vw;
 
     & .cta-sm {
-      &#add {
+      &#add,
+      &#save,
+      &#delete {
         right: 9rem;
       }
     }

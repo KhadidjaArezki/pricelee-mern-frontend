@@ -22,14 +22,14 @@ const LogoutButton = () => {
   }
 
   return (
-    <li
+    <button
       id="logout"
       className='hidden'
       ref={ logoutButtonRef }
       onClick={handleLogout}
     >
       <a href="/">Logout</a>
-    </li>
+    </button>
   )
 }
 

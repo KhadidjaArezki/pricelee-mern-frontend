@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateAlert } from '../reducers/trackerReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const EditItemModal = forwardRef(({ item }, ref) => {
   const user = useSelector(({ user }) => user)
@@ -19,6 +20,11 @@ const EditItemModal = forwardRef(({ item }, ref) => {
       },
       token
     ))
+    
+    dispatch(setNotification({
+      message: 'changes successfully save',
+      type: 'success'
+    }, 3))
   }
 
   return (
@@ -43,9 +49,9 @@ const EditItemModal = forwardRef(({ item }, ref) => {
 
         <button
           type='submit'
-          id="edit"
+          id="save"
           className='cta cta-sm'
-          name='edit'
+          name='save'
           >save
         </button> 
       </form>

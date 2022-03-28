@@ -1,10 +1,12 @@
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../reducers/userReducer'
 
 const LoginForm = () => {
+  const user = useSelector(({ user }) => user)
+  const isLogged = user.username && user.token
   const dispatch = useDispatch()
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault()
     const username = event.target.username.value
     const password = event.target.password.value

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import userService from '../services/users'
 import loginService from '../services/login'
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode'
 
 const storedUser = JSON.parse(localStorage.getItem('USER'))
 
@@ -34,17 +34,29 @@ const userSlice = createSlice({
         tokenCreationDate: jwt_decode(action.payload.token).exp
       }))
     },
-    getUser() {
-      return JSON.parse(localStorage.getItem('USER'))
-    },
+    // getUser() {
+    //   return JSON.parse(localStorage.getItem('USER'))
+    // },
     removeUser() {
       localStorage.removeItem('USER')
       return initialState
+    },
+    redirectAfterLogin(_, __) {
+      window.location.replace(
+        `${ process.env.REACT_APP_FRONTEND_SERVER_URL }/tracker`
+      )
+    },
+    redirectAfterSignup(_, __) {
+      window.location.replace( 
+        `${ process.env.REACT_APP_FRONTEND_SERVER_URL }/search`
+      )
     }
   }
 })
 
-export const { setUser, getUser, removeUser } = userSlice.actions
+export const { setUser, getUser, removeUser,
+                redirectAfterLogin, redirectAfterSignup
+} = userSlice.actions
 
 export const createUser = (username, password) => {
   return async (dispatch) => {
@@ -56,7 +68,7 @@ export const createUser = (username, password) => {
       username: user.username,
       token: user.token
     }))
-    dispatch(getUser())
+    dispatch(redirectAfterSignup())
   }
 }
 
@@ -70,7 +82,7 @@ export const loginUser = (username, password) => {
       username: user.username,
       token: user.token
     }))
-    dispatch(getUser())
+    dispatch(redirectAfterLogin())
   }
 }
 
