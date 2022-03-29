@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { loginUser } from '../reducers/userReducer'
+import { setNotification } from '../reducers/notificationReducer'
 
 const LoginForm = () => {
   const user = useSelector(({ user }) => user)
@@ -11,6 +12,12 @@ const LoginForm = () => {
     const username = event.target.username.value
     const password = event.target.password.value
     dispatch(loginUser(username, password))
+    .catch(error => {
+      dispatch(setNotification({
+        message: error.message,
+        type: 'error'
+      }, 3))
+    })
   }
 
   return (

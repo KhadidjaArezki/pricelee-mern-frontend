@@ -60,29 +60,39 @@ export const { setUser, getUser, removeUser,
 
 export const createUser = (username, password) => {
   return async (dispatch) => {
-    const user = await userService.createUser({
+    return userService.createUser({
       username,
       password
     })
-    dispatch(setUser({
-      username: user.username,
-      token: user.token
-    }))
-    dispatch(redirectAfterSignup())
+    .then(response => { 
+      dispatch(setUser({
+        username: response.username,
+        token: response.token
+      }))
+      dispatch(redirectAfterSignup())
+    })
+    .catch(error => {
+      throw new Error(error.response.data.error)
+    })
   }
 }
 
 export const loginUser = (username, password) => {
   return async (dispatch) => {
-    const user = await loginService.login({
+    return loginService.login({
       username,
       password
     })
-    dispatch(setUser({
-      username: user.username,
-      token: user.token
-    }))
-    dispatch(redirectAfterLogin())
+    .then(response => {
+      dispatch(setUser({
+        username: response.username,
+        token: response.token
+      }))
+      dispatch(redirectAfterLogin())
+    })
+    .catch(error => {
+      throw new Error(error.response.data.error)
+    })
   }
 }
 

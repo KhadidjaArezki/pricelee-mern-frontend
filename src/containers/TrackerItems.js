@@ -25,8 +25,7 @@ const TrackerItems = ({ itemsPerPage }) => {
     </div>
   
   const showItems = () => {
-    setTimeout(() => {
-      if (items.length === 0) {
+    if (items.length === 0) {
         return (
           <div className="not-received">
             <p>Your tracked products will appear here.</p>
@@ -36,7 +35,6 @@ const TrackerItems = ({ itemsPerPage }) => {
           </div>
         )
       }
-    }, 100)
 
     return (
       <PaginatedTracker

@@ -3,7 +3,7 @@ const Teaser = () => {
     <div className="teaser">
       <p className="headline">An Online Price Tracking Service</p>
       <p className="phrase">
-        We track your <span className="hl">spending</span>
+        We track your <span className="hl">shopping</span>
       </p>
       <p className="phrase">
         to boost your <span className="hl">savings</span>

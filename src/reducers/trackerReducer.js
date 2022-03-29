@@ -68,8 +68,13 @@ export const getTracker = (token) => {
 
 export const trackProduct = (productObject, token) => {
   return async (dispatch) => {
-    const newItem = await trackerService.createNew(productObject, token)
-    dispatch(appendItem(newItem))
+    return trackerService.createNew(productObject, token)
+    .then(newItem => {
+      dispatch(appendItem(newItem))
+    })
+    .catch(error => {
+      throw new Error(error.response.data.error)
+    })
   }
 }
 

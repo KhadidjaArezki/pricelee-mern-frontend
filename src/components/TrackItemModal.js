@@ -23,11 +23,18 @@ const TrackItemModal = forwardRef(({ result }, ref) => {
       productStore   : result.productStore,
       desiredPrice   : event.target.desiredPrice.value
     }, token))
-
-    dispatch(setNotification({
-      message: 'item successfully added to your tracker',
-      type: 'success'
-    }, 3))
+    .then(() => {
+      dispatch(setNotification({
+        message: 'item successfully added to your tracker',
+        type: 'success'
+      }, 3))
+    })
+    .catch(error => {
+      dispatch(setNotification({
+        message: error.message,
+        type: 'error'
+      }, 3))
+    })
   }
 
   return (
