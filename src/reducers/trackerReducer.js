@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import trackerService from '../services/trackers'
+import { setNotification } from './notificationReducer'
 
 const trackerSlice = createSlice({
   name: 'tracker',
@@ -59,37 +60,7 @@ export const { setTracker, setCurrentItems,
               updateDesiredPrice, removeAlert
 } = trackerSlice.actions
 
-export const getTracker = (token) => {
-  return async (dispatch) => {
-    const tracker = await trackerService.getAll(token)
-    dispatch(setTracker(tracker))
-  }
-}
-
-export const trackProduct = (productObject, token) => {
-  return async (dispatch) => {
-    return trackerService.createNew(productObject, token)
-    .then(newItem => {
-      dispatch(appendItem(newItem))
-    })
-    .catch(error => {
-      throw new Error(error.response.data.error)
-    })
-  }
-}
-
-export const updateAlert = (id, alertToUpdate, token) => {
-  return async (dispatch) => {
-    const updatedAlert = await trackerService.update(id, alertToUpdate, token)
-    dispatch(updateDesiredPrice(updatedAlert))
-  }
-}
-
-export const deleteAlert = (id, token) => {
-  return async (dispatch) => {
-    const deletedAlert = await trackerService.remove(id, token)
-    dispatch(removeAlert(deletedAlert))
-  }
-}
-
+export const selectTrackerItems = (state) => state.tracker.items
+export const selectTrackerCurrentItems = (state) => state.tracker.currentItems
+export const selectTrackerItemsOffset = (state) => state.tracker.itemsOffset
 export default trackerSlice.reducer
