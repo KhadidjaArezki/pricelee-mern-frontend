@@ -7,9 +7,10 @@ For the moment, pricelee only supports calls to the ebay api. It can search by k
 
 After a user is authenticated, they can add alerts, edit and delete them. They can see the complete list of the alerts they created.
 
-The backend is hosted at [https://pricelee-mern-frontend.herokuapp.com/](https://pricelee-mern-frontend.herokuapp.com/)
+The backend repository is located at [https://github.com/KhadidjaArezki/pricelee-mern-backend]
 
-## Stack 
+## Stack
+
 This project uses the MERN stack:
 
 - Mongoose.js (MongoDB): database
@@ -18,7 +19,7 @@ This project uses the MERN stack:
 - Node.js: runtime environment
 
 ## State Managment
-The app uses the Redux library to manage and update state through actions
 
+The app uses the Redux library to manage and update state through actions
 
 ## Authors: Khadidja Arezki
