@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux'
+import { selectCurrentUser, selectCurrentToken } from '../reducers/authReducer'
 import NavLink from "../components/NavLink";
 import MenuButton from "../components/MenuButton";
 const Navbar = () => {
-  const user = useSelector(({ user }) => user)
-  const isLogged = user.username && user.token
+  const user = useSelector(selectCurrentUser)
+  const token = useSelector(selectCurrentToken)
+  const isLogged = user && token
 
   return (
     <>

@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react'
+import { selectCurrentUser, selectCurrentToken } from '../reducers/authReducer'
 import { useSelector } from 'react-redux'
 
 const UserIcon = () => {
-  const user = useSelector(({ user }) => user)
-  const isLogged = user.username && user.token
+  const user = useSelector(selectCurrentUser)
+  const token = useSelector(selectCurrentToken)
+  const isLogged = user && token
   const userIconRef = useRef()
   
   useEffect(() => {
@@ -13,17 +15,13 @@ const UserIcon = () => {
     else {
       userIconRef.current.classList.remove('hidden')
     }
-  }, [ user ])
+  }, [ user, token ])
 
 
-  return (
-    <li
-      id="user-icon"
-      className='hidden'
-      ref={ userIconRef }
-    >
-      { user.username.substring(0, 1).toUpperCase() }
-    </li>
+  return ( 
+      <li id="user-icon" className='hidden' ref={ userIconRef }>
+        { isLogged && user.substring(0, 1).toUpperCase() }
+      </li>
   )
 }
 
