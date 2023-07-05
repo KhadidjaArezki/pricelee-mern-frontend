@@ -1,6 +1,5 @@
 // Extend apiSlice
 import { apiSlice } from "./apiSlice"
-import { setCredentials } from "../reducers/authReducer"
 
 const LOGIN_URI = "/login"
 const LOGOUT_URI = "/tokens"
@@ -19,7 +18,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: LOGOUT_URI,
         method: "DELETE",
-      })
+      }),
     }),
     signup: builder.mutation({
       query: (credentials) => ({
@@ -27,13 +26,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...credentials },
       }),
-    })
+    }),
   }),
 })
 
 export const {
   useLoginMutation,
   useSignupMutation,
-  useLogoutMutation // auto-generated hooks
+  useLogoutMutation, // auto-generated hooks
 } = authApiSlice
-

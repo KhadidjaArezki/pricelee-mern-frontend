@@ -1,6 +1,6 @@
-import { useRef, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { selectCurrentUser, selectCurrentToken } from '../reducers/authReducer'
+import { useRef, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { selectCurrentUser, selectCurrentToken } from "../reducers/authReducer"
 
 const LoginButton = () => {
   const user = useSelector(selectCurrentUser)
@@ -9,20 +9,15 @@ const LoginButton = () => {
   const logintButtonRef = useRef()
 
   useEffect(() => {
-    if ( isLogged ) {
-      logintButtonRef.current.classList.add('hidden')
+    if (isLogged) {
+      logintButtonRef.current.classList.add("hidden")
+    } else {
+      logintButtonRef.current.classList.remove("hidden")
     }
-    else {
-      logintButtonRef.current.classList.remove('hidden')
-    }
-  }, [ user ])
+  }, [isLogged])
 
   return (
-    <button
-      id='login'
-      className='hidden'
-      ref={ logintButtonRef }
-    >
+    <button id="login" className="hidden" ref={logintButtonRef}>
       <a href="/signup">Login</a>
     </button>
   )

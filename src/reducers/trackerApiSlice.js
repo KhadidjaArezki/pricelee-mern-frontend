@@ -1,5 +1,4 @@
 import { apiSlice } from "./apiSlice"
-import { setCredentials } from "../reducers/authReducer"
 
 const TRACKER_URI = "/trackers"
 
@@ -8,36 +7,35 @@ export const trackerApiSlice = apiSlice.injectEndpoints({
     getTracker: builder.query({
       query: () => ({
         url: TRACKER_URI,
-        method: "GET"
-      })
+        method: "GET",
+      }),
     }),
     createAlert: builder.mutation({
       query: (newProduct) => ({
         url: TRACKER_URI,
         method: "POST",
-        body: { ...newProduct }
-      })
+        body: { ...newProduct },
+      }),
     }),
     updateAlert: builder.mutation({
       query: ({ id, ...alertToUpdate }) => ({
         url: `${TRACKER_URI}/${id}`,
         method: "PUT",
-        body: { ...alertToUpdate }
-      })
+        body: { ...alertToUpdate },
+      }),
     }),
     deleteAlert: builder.mutation({
       query: (id) => ({
         url: `${TRACKER_URI}/${id}`,
-        method: "DELETE"
-      })
-    })
-  })
+        method: "DELETE",
+      }),
+    }),
+  }),
 })
 
 export const {
   useGetTrackerQuery,
   useCreateAlertMutation,
   useUpdateAlertMutation,
-  useDeleteAlertMutation
+  useDeleteAlertMutation,
 } = trackerApiSlice
-

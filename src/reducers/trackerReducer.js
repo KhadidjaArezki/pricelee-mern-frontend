@@ -1,31 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit'
-import trackerService from '../services/trackers'
-import { setNotification } from './notificationReducer'
+import { createSlice } from "@reduxjs/toolkit"
 
 const trackerSlice = createSlice({
-  name: 'tracker',
+  name: "tracker",
   initialState: {
     items: [],
     currentItems: [],
-    itemsOffset: 0
+    itemsOffset: 0,
   },
   reducers: {
     setTracker(state, action) {
       return {
         ...state,
-        items: action.payload
+        items: action.payload,
       }
     },
     setCurrentItems(state, action) {
       return {
         ...state,
-        currentItems: action.payload
+        currentItems: action.payload,
       }
     },
     setItemsOffset(state, action) {
       return {
         ...state,
-        itemsOffset: action.payload
+        itemsOffset: action.payload,
       }
     },
     appendItem(state, action) {
@@ -36,28 +34,28 @@ const trackerSlice = createSlice({
       const id = updatedAlert.alertId
       return {
         ...state,
-        items: state.items.map(item => 
-          item.alertId !== id ?
-            item
-            : updatedAlert
-        )
+        items: state.items.map((item) =>
+          item.alertId !== id ? item : updatedAlert
+        ),
       }
     },
     removeAlert(state, action) {
       const id = action.payload.id
       return {
         ...state,
-        items: state.items.filter(item =>
-          item.alertId !== id
-        )
+        items: state.items.filter((item) => item.alertId !== id),
       }
-    }
-  }
+    },
+  },
 })
 
-export const { setTracker, setCurrentItems,
-              setItemsOffset, appendItem,
-              updateDesiredPrice, removeAlert
+export const {
+  setTracker,
+  setCurrentItems,
+  setItemsOffset,
+  appendItem,
+  updateDesiredPrice,
+  removeAlert,
 } = trackerSlice.actions
 
 export const selectTrackerItems = (state) => state.tracker.items

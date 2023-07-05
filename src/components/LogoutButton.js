@@ -1,8 +1,8 @@
-import { useRef, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectCurrentUser, selectCurrentToken } from '../reducers/authReducer'
-import { useLogoutMutation } from '../reducers/authApiSlice'
-import { resetCredentials } from '../reducers/authReducer'
+import { useRef, useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { selectCurrentUser, selectCurrentToken } from "../reducers/authReducer"
+import { useLogoutMutation } from "../reducers/authApiSlice"
+import { resetCredentials } from "../reducers/authReducer"
 
 const LogoutButton = () => {
   const user = useSelector(selectCurrentUser)
@@ -10,16 +10,15 @@ const LogoutButton = () => {
   const isLogged = user && token
   const logoutButtonRef = useRef()
   const dispatch = useDispatch()
-  const [ logout, { isLoaading } ] = useLogoutMutation()
+  const [logout] = useLogoutMutation()
 
   useEffect(() => {
-    if ( !isLogged ) {
-      logoutButtonRef.current.classList.add('hidden')
+    if (!isLogged) {
+      logoutButtonRef.current.classList.add("hidden")
+    } else {
+      logoutButtonRef.current.classList.remove("hidden")
     }
-    else {
-      logoutButtonRef.current.classList.remove('hidden')
-    }
-  }, [ user ])
+  }, [isLogged])
 
   const handleLogout = async () => {
     await logout().unwrap()
@@ -29,10 +28,9 @@ const LogoutButton = () => {
   return (
     <button
       id="logout"
-      className='hidden'
-      ref={ logoutButtonRef }
-      onClick={handleLogout}
-    >
+      className="hidden"
+      ref={logoutButtonRef}
+      onClick={handleLogout}>
       Logout
     </button>
   )
