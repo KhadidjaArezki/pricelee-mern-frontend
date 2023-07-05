@@ -1,12 +1,16 @@
 import { useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { logoutUser } from '../reducers/userReducer'
+import { selectCurrentUser, selectCurrentToken } from '../reducers/authReducer'
+import { useLogoutMutation } from '../reducers/authApiSlice'
+import { resetCredentials } from '../reducers/authReducer'
 
 const LogoutButton = () => {
-  const user = useSelector(({ user }) => user)
-  const isLogged = user.username && user.token
+  const user = useSelector(selectCurrentUser)
+  const token = useSelector(selectCurrentToken)
+  const isLogged = user && token
   const logoutButtonRef = useRef()
   const dispatch = useDispatch()
+  const [ logout, { isLoaading } ] = useLogoutMutation()
 
   useEffect(() => {
     if ( !isLogged ) {
@@ -17,8 +21,9 @@ const LogoutButton = () => {
     }
   }, [ user ])
 
-  const handleLogout = () => {
-    dispatch(logoutUser())
+  const handleLogout = async () => {
+    await logout().unwrap()
+    dispatch(resetCredentials())
   }
 
   return (
@@ -28,7 +33,7 @@ const LogoutButton = () => {
       ref={ logoutButtonRef }
       onClick={handleLogout}
     >
-      <a href="/">Logout</a>
+      Logout
     </button>
   )
 }
