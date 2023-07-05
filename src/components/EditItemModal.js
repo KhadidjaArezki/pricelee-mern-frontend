@@ -1,30 +1,47 @@
-import { forwardRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateAlert } from '../reducers/trackerReducer'
+import { useState, forwardRef } from 'react'
+import { useDispatch } from 'react-redux'
+import { useUpdateAlertMutation } from '../reducers/trackerApiSlice'
+import { updateDesiredPrice } from '../reducers/trackerReducer'
 import { setNotification } from '../reducers/notificationReducer'
 
 const EditItemModal = forwardRef(({ item }, ref) => {
-  const user = useSelector(({ user }) => user)
-  const token = user.token
   const dispatch = useDispatch()
+  const [errMsg, setErrMsg] = useState("")
+  const [ updateAlert ] = useUpdateAlertMutation()
 
   const closeModal = () => {
     ref.current.close()
   }
 
-  const editAlert = (event) => {
-    dispatch(updateAlert(
-      item.alertId, 
-      {
-        desiredPrice: event.target.desiredPrice.value
-      },
-      token
-    ))
-    
-    dispatch(setNotification({
-      message: 'changes successfully save',
-      type: 'success'
-    }, 3))
+  const editAlert = async (event) => {
+    try {
+      const updatedAlert = await updateAlert({
+        id: item.alertId,
+        desiredPrice: parseInt(event.target.desiredPrice.value)
+      }).unwrap()
+      console.log(updatedAlert)
+      closeModal()
+      dispatch(updateDesiredPrice(updatedAlert))
+      dispatch(setNotification({
+        message: 'changes successfully saved',
+        type: 'success'
+      }, 3))
+    } catch(err) {
+      if (!err?.status) {
+        // isLoading: true - until timeout
+        setErrMsg("No Server Response")
+      } else if (err.status === 400) {
+        setErrMsg("malformed data")
+      } else {
+        setErrMsg("Failed to update item in your tracker")
+      }
+      closeModal()
+      dispatch(setNotification({
+        message: errMsg || err.data?.error || err.error,
+        type: 'error'
+      }, 5))
+      setErrMsg("")
+    }
   }
 
   return (

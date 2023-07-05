@@ -1,10 +1,12 @@
 import { useRef } from 'react'
 import { useSelector } from 'react-redux'
+import { selectCurrentUser, selectCurrentToken } from '../reducers/authReducer'
 import TrackItemModal from './TrackItemModal'
 
 const SearchResult = ({ result }) => {
-  const user = useSelector(({ user }) => user)
-  const isLogged = user.username && user.token
+  const user = useSelector(selectCurrentUser)
+  const token = useSelector(selectCurrentToken)
+  const isLogged = user && token
   const modalRef = useRef()
 
   const getCta = () => {

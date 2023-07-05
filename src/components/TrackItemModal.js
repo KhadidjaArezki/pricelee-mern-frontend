@@ -1,40 +1,55 @@
-import { forwardRef } from 'react'
+import { useState, forwardRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { trackProduct } from '../reducers/trackerReducer'
+import { selectCurrentToken } from '../reducers/authReducer'
+import { appendItem } from '../reducers/trackerReducer'
+import { useCreateAlertMutation } from '../reducers/trackerApiSlice'
 import { setNotification } from '../reducers/notificationReducer'
 
 const TrackItemModal = forwardRef(({ result }, ref) => {
-  const user = useSelector(({ user }) => user)
-  const token = user.token
+  const token = useSelector(selectCurrentToken)
   const dispatch = useDispatch()
+  const [errMsg, setErrMsg] = useState("")
+  const [ createAlert ] = useCreateAlertMutation()
 
   const closeModal = () => {
     ref.current.close()
   }
 
-  const createAlert = (event) => {
-    dispatch(trackProduct({
-      productId      : result.productId,
-      productName    : result.productName,
-      productLink    : result.productLink,
-      productImage   : result.productImage,
-      productPrice   : result.productPrice,
-      productCurrency: result.productCurrency,
-      productStore   : result.productStore,
-      desiredPrice   : event.target.desiredPrice.value
-    }, token))
-    .then(() => {
+  const trackProduct = async (event) => {
+    event.preventDefault()
+    try {
+      const newItem = await createAlert({
+        productId      : result.productId,
+        productName    : result.productName,
+        productLink    : result.productLink,
+        productImage   : result.productImage,
+        productPrice   : result.productPrice,
+        productCurrency: result.productCurrency,
+        productStore   : result.productStore,
+        desiredPrice   : event.target.desiredPrice.value
+      }).unwrap()
+      closeModal()
+      dispatch(appendItem(newItem))
       dispatch(setNotification({
         message: 'item successfully added to your tracker',
         type: 'success'
       }, 3))
-    })
-    .catch(error => {
+    } catch (err) {
+      if (!err?.status) {
+        // isLoading: true - until timeout
+        setErrMsg("No Server Response")
+      } else if (err.status === 400) {
+        setErrMsg("malformed data")
+      } else if (err.status === 500) {
+        setErrMsg("Failed to add item to your tracker")
+      }
+      closeModal()
       dispatch(setNotification({
-        message: error.message,
+        message: errMsg || err.data?.error || err.error,
         type: 'error'
-      }, 3))
-    })
+      }, 5))
+      setErrMsg("")
+    }
   }
 
   return (
@@ -47,7 +62,7 @@ const TrackItemModal = forwardRef(({ result }, ref) => {
 
       <form
         method='dialog'
-        onSubmit={ createAlert }
+        onSubmit={ trackProduct }
       >
         <label>Desired price: </label>
         <input

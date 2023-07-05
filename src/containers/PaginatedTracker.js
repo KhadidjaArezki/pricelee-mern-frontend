@@ -1,14 +1,14 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux'
+import { selectTrackerItems, selectTrackerCurrentItems, selectTrackerItemsOffset } from '../reducers/trackerReducer'
 import { setCurrentItems, setItemsOffset } from '../reducers/trackerReducer'
 import TrackerItem from '../components/TrackerItem'
 import Pagination from '../components/Pagination'
 
 const PaginatedTracker = ({ itemsPerPage }) => {
-  const tracker = useSelector(({ tracker }) => tracker)
-  const items = tracker.items
-  const currentItems = tracker.currentItems
-  const itemsOffset = tracker.itemsOffset
+  const items = useSelector(selectTrackerItems)
+  const currentItems = useSelector(selectTrackerCurrentItems)
+  const itemsOffset = useSelector(selectTrackerItemsOffset)
 
   const dispatch = useDispatch()
 

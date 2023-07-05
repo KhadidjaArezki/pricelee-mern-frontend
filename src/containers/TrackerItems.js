@@ -1,20 +1,30 @@
 import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getTracker } from '../reducers/trackerReducer'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectCurrentUser, selectCurrentToken } from '../reducers/authReducer'
+import { useGetTrackerQuery } from '../reducers/trackerApiSlice'
+import { setTracker, selectTrackerItems } from '../reducers/trackerReducer'
+import { setNotification } from '../reducers/notificationReducer'
 import PaginatedTracker from './PaginatedTracker'
 
 const TrackerItems = ({ itemsPerPage }) => {
-  const user = useSelector(({ user }) => user)
-  const token = user.token
-  const isLogged = user.username && user.token
-  const tracker = useSelector(({ tracker }) => tracker)
-  const items = tracker.items
-
+  const user = useSelector(selectCurrentUser)
+  const token = useSelector(selectCurrentToken)
+  const isLogged = user && token
+  const items = useSelector(selectTrackerItems)
+  const { data } = useGetTrackerQuery()
   const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(getTracker(token))
-  }, [])
+  useEffect(async () => {
+    try {
+      data && dispatch(setTracker([...data ]))
+    } catch(err) {
+      console.log(err)
+      dispatch(setNotification({
+        message: "An error occured while getting your data",
+        type: 'error'
+      }, 5))
+    }
+  }, [data])
 
   const showNotLogged = () =>
     <div className="not-received">
