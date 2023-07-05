@@ -7,7 +7,11 @@ For the moment, pricelee only supports calls to the ebay api. It can search by k
 
 After a user is authenticated, they can add alerts, edit and delete them. They can see the complete list of the alerts they created.
 
-The backend repository is located at [https://github.com/KhadidjaArezki/pricelee-mern-backend]
+The user is kept logged in by sending requests for new tokens every time the access token is expired.
+
+The backend repository is located at [https://github.com/KhadidjaArezki/pricelee-mern-backend](https://github.com/KhadidjaArezki/pricelee-mern-backend)
+
+The project is hosted at [https://pricelee-mern-backend.onrender.com/api](https://pricelee-mern-backend.onrender.com/api)
 
 ## Stack
 
@@ -20,6 +24,6 @@ This project uses the MERN stack:
 
 ## State Managment
 
-The app uses the Redux library to manage and update state through actions
+The app uses the Redux library to manage and update state through actions and RTK Query for authentication and automatic re-auth by sending refresh tokens in secure http-only cookies.
 
 ## Authors: Khadidja Arezki
