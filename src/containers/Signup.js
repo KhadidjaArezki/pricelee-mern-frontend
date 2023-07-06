@@ -11,26 +11,28 @@ const Signup = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [signup] = useSignupMutation()
-  const [user, setUser] = useState("")
-  const [pwd, setPwd] = useState("")
+  const [signupUser, setSignupUser] = useState("")
+  const [signupPwd, setSignupPwd] = useState("")
+  const [loginUser, setLoginUser] = useState("")
+  const [loginPwd, setLoginPwd] = useState("")
   const [errMsg, setErrMsg] = useState("")
   const [login] = useLoginMutation()
 
   useEffect(() => {
     setErrMsg("")
-  }, [user, pwd])
+  }, [signupUser, signupPwd, loginUser, loginPwd])
 
   const handleSignup = async (event) => {
     event.preventDefault()
     try {
       const userData = await signup({
-        username: user,
-        password: pwd,
+        username: signupUser,
+        password: signupPwd,
       }).unwrap()
       dispatch(setCredentials({ ...userData }))
       history.push(`/${NAVIGATE_AFTER_LOGIN_URI}`)
-      setUser("")
-      setPwd("")
+      setSignupUser("")
+      setSignupPwd("")
     } catch (err) {
       if (!err?.status) {
         // isLoading: true - until timeout
@@ -56,13 +58,13 @@ const Signup = () => {
     event.preventDefault()
     try {
       const userData = await login({
-        username: user,
-        password: pwd,
+        username: loginUser,
+        password: loginPwd,
       }).unwrap()
       dispatch(setCredentials({ ...userData }))
       history.push(`/${NAVIGATE_AFTER_LOGIN_URI}`)
-      setUser("")
-      setPwd("")
+      setLoginUser("")
+      setLoginPwd("")
     } catch (err) {
       if (!err?.status) {
         // isLoading: true - until timeout
@@ -86,8 +88,10 @@ const Signup = () => {
     }
   }
 
-  const handleUserInput = (event) => setUser(event.target.value)
-  const handlePwdInput = (event) => setPwd(event.target.value)
+  const handleSignupUserInput = (event) => setSignupUser(event.target.value)
+  const handleSignupPwdInput = (event) => setSignupPwd(event.target.value)
+  const handleLoginUserInput = (event) => setLoginUser(event.target.value)
+  const handleLoginPwdInput = (event) => setLoginPwd(event.target.value)
 
   return (
     <div id="signup">
@@ -102,12 +106,16 @@ const Signup = () => {
             <input
               type="text"
               name="username"
+              value={signupUser}
+              onChange={handleSignupUserInput}
               placeholder="User name"
               required={true}
             />
             <input
               type="password"
               name="password"
+              value={signupPwd}
+              onChange={handleSignupPwdInput}
               placeholder="Password"
               required={true}
             />
@@ -123,16 +131,16 @@ const Signup = () => {
             <input
               type="text"
               id="username"
-              value={user}
-              onChange={handleUserInput}
+              value={loginUser}
+              onChange={handleLoginUserInput}
               placeholder="username"
               required={true}
             />
             <input
               type="password"
               id="password"
-              value={pwd}
-              onChange={handlePwdInput}
+              value={loginPwd}
+              onChange={handleLoginPwdInput}
               placeholder="Password"
               required={true}
             />

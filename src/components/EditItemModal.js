@@ -17,7 +17,7 @@ const EditItemModal = forwardRef(({ item }, ref) => {
     try {
       const updatedAlert = await updateAlert({
         id: item.alertId,
-        desiredPrice: parseInt(event.target.desiredPrice.value)
+        desiredPrice: parseFloat(event.target.desiredPrice.value)
       }).unwrap()
       console.log(updatedAlert)
       closeModal()
