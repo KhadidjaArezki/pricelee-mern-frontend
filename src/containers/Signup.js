@@ -38,7 +38,7 @@ const Signup = () => {
       } else if (err.status === 400) {
         setErrMsg("Missing Username or password")
       } else if (err.status === 500) {
-        setErrMsg("Login failed")
+        setErrMsg("Signup failed")
       }
       dispatch(
         setNotification(
@@ -86,7 +86,8 @@ const Signup = () => {
     }
   }
 
-  const handleUserInput = (event) => setUser(event.target.value)
+  const handleUserIn
+  put = (event) => setUser(event.target.value)
   const handlePwdInput = (event) => setPwd(event.target.value)
 
   return (

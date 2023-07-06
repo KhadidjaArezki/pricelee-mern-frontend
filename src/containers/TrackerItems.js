@@ -24,10 +24,7 @@ const TrackerItems = ({ itemsPerPage }) => {
             {
               message: "An error occured while getting your data",
               type: "error",
-            },
-            5
-          )
-        )
+            }, 5))
       }
     })()
   }, [data])

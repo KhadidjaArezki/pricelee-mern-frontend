@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
         <div className="social-media">
           <a href="https://github.com/KhadidjaArezki/"><img src={github} alt="github icon"/></a>
-          <a href="www.linkedin.com/in/khadidja-arezki-343b9b199/"><img src={linkedin} alt="linkedin icon"/></a>
+          <a href="https://linkedin.com/in/khadidja-arezki-343b9b199/"><img src={linkedin} alt="linkedin icon"/></a>
           <a href="/"><img src={twitter} alt="twitter icon"/></a>
         </div>
       </div>

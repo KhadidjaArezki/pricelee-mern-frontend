@@ -56,7 +56,6 @@ export const { setResults,
             } = searchSlice.actions
 
 export const getResults = (searchObject) => {
-  console.log(searchObject);
   return async (dispatch) => {
     const results = await productsService.search(searchObject)
     dispatch(setResults(results))
