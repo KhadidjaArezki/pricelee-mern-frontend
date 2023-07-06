@@ -86,8 +86,7 @@ const Signup = () => {
     }
   }
 
-  const handleUserIn
-  put = (event) => setUser(event.target.value)
+  const handleUserInput = (event) => setUser(event.target.value)
   const handlePwdInput = (event) => setPwd(event.target.value)
 
   return (
