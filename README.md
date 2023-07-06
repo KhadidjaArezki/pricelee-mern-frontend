@@ -11,7 +11,7 @@ The user is kept logged in by sending requests for new tokens every time the acc
 
 The backend repository is located at [https://github.com/KhadidjaArezki/pricelee-mern-backend](https://github.com/KhadidjaArezki/pricelee-mern-backend)
 
-The project is hosted at [https://pricelee-mern-backend.onrender.com/api](https://pricelee-mern-backend.onrender.com/api)
+The project is hosted at [https://pricelee-mern-backend.onrender.com/](https://pricelee-mern-backend.onrender.com/)
 
 ## Stack
 
